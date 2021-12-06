@@ -20,9 +20,10 @@ public class Daily1206 {
          * 测试 truncateSentence 方法
          */
         String s = "What is the solution to this problem";
+//        String s = "i l u";
         int k = 4;
 
-        String truncateSentence = truncateSentence1(s, k);
+        String truncateSentence = truncateSentence2(s, k);
 
         System.out.println(truncateSentence);
     }
@@ -72,11 +73,22 @@ public class Daily1206 {
      * @return
      */
     public static String truncateSentence2(String s, int k) {
+        int length = s.length();
         int count = 0;
         int end = 0;
 
-        for (int i = 1; i < s.length(); i++) {
-            if ()
+        for (int i = 0; i < length + 1; i++) {
+            if (i == length || s.charAt(i) == ' ') {
+                count++;
+                if (count == k) {
+                    end = i;
+                    break;
+                }
+            }
         }
+
+        String truncateSentence = s.substring(0, end);
+
+        return truncateSentence;
     }
 }
