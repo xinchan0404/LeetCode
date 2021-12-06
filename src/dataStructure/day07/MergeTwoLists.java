@@ -1,5 +1,8 @@
 package dataStructure.day07;
 
+import dataStructure.utils.ListNode;
+import dataStructure.utils.SingleLinkedList;
+
 /**
  * 21. 合并两个有序链表
  * 提示：
@@ -22,8 +25,8 @@ public class MergeTwoLists {
         singleLinkedList1.createSingleLinkedList(array1);
         singleLinkedList2.createSingleLinkedList(array2);
 
-        ListNode list1 = singleLinkedList1.getHead();
-        ListNode list2 = singleLinkedList2.getHead();
+        ListNode list1 = singleLinkedList1.head;
+        ListNode list2 = singleLinkedList2.head;
 
         /*
          * 测试 mergeTwoLists 方法

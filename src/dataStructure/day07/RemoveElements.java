@@ -1,5 +1,8 @@
 package dataStructure.day07;
 
+import dataStructure.utils.ListNode;
+import dataStructure.utils.SingleLinkedList;
+
 import static dataStructure.day07.MergeTwoLists.traversal;
 
 /**
@@ -21,7 +24,7 @@ public class RemoveElements {
 //        int[] array = {7, 7, 7, 7};
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         singleLinkedList.createSingleLinkedList(array);
-        ListNode head = singleLinkedList.getHead();
+        ListNode head = singleLinkedList.head;
 
         /*
          * 测试 RemoveElements 方法
@@ -29,7 +32,7 @@ public class RemoveElements {
         int val = 6;
 
         ListNode newHead = removeElements1(head, val);
-        traversal(newHead);
+        SingleLinkedList.traversal(newHead);
     }
 
     /**

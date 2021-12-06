@@ -1,5 +1,7 @@
 package dataStructure.day07;
 
+import dataStructure.utils.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,8 +26,7 @@ public class HasCycle {
         int pos = -1;
 
         cycleLinkedList.createCycleLinkedList(array, pos);
-
-        ListNode head = cycleLinkedList.getHead();
+        ListNode head = cycleLinkedList.head;
 
         /*
          * 测试 hasCycle 方法

@@ -10,7 +10,7 @@ public class SingleLinkedList {
     /*
      * instance field
      */
-    ListNode head;
+    public ListNode head;
 
     /*
      * constructor
@@ -22,20 +22,17 @@ public class SingleLinkedList {
     /*
      * methods
      */
-    public ListNode getHead() {
-        return head;
-    }
-
-    public void setHead(ListNode head) {
-        this.head = head;
-    }
-
     /**
      * 创建基于数组数据的单链表
      *
      * @param array
      */
     public void createSingleLinkedList(int[] array) {
+        if (array == null || array.length == 0) {
+            head = null;
+            return;
+        }
+
         head = new ListNode(array[0]);
 
         ListNode tmp = head;

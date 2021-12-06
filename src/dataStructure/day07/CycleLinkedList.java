@@ -1,5 +1,7 @@
 package dataStructure.day07;
 
+import dataStructure.utils.ListNode;
+
 /**
  * @author xinchan
  * @version 1.0.1 2021-12-02
@@ -8,7 +10,7 @@ public class CycleLinkedList {
     /*
      * instance field
      */
-    private ListNode head;
+    public ListNode head;
 
     /*
      * constructor
@@ -19,14 +21,6 @@ public class CycleLinkedList {
     /*
      * methods
      */
-    public ListNode getHead() {
-        return head;
-    }
-
-    public void setHead(ListNode head) {
-        this.head = head;
-    }
-
     /**
      * 创建环形链表
      *

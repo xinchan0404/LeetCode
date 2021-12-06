@@ -20,7 +20,7 @@ public class ReverseList {
         int[] array = {1, 2, 3, 4, 5};
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         singleLinkedList.createSingleLinkedList(array);
-        ListNode head = singleLinkedList.getHead();
+        ListNode head = singleLinkedList.head;
 
         /*
          * 测试 reverseList 方法
@@ -73,7 +73,7 @@ public class ReverseList {
 
         ListNode pre = null;
         ListNode cur = head;
-        ListNode post = null;
+        ListNode post;
         while (cur != null) {
             post = cur.next;
             cur.next = pre;
