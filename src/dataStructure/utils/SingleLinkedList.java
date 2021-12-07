@@ -54,10 +54,10 @@ public class SingleLinkedList {
         }
 
         ListNode tmp = head;
-        while (tmp.next != null) {
-            System.out.print(tmp + "--");
+        while (tmp != null) {
+            System.out.print(tmp.val + " --> ");
             tmp = tmp.next;
         }
-        System.out.println(tmp);
+        System.out.println("null");
     }
 }
