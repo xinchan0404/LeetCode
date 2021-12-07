@@ -27,11 +27,13 @@ public class CompleteBinaryTree {
      *
      * @param index
      */
-    public void fullBinaryTree(TreeNode root, int index) {
+    public TreeNode fullBinaryTree(TreeNode root, int index) {
         if (array == null || length == 0) {
-            return;
+            return null;
         }
-
+        if (root == null || index == 0) {
+            root = new TreeNode(array[0]);
+        }
         /*
          * 添加左子树节点
          */
@@ -49,6 +51,33 @@ public class CompleteBinaryTree {
             root.right = right;
             fullBinaryTree(root.right, 2 * index + 2);
         }
+
+        return root;
+    }
+
+    public TreeNode fullBinaryTree() {
+        return fullBinaryTree(null, 0);
+    }
+
+    public TreeNode fullBinaryTree1(int index) {
+        if (array == null || length == 0) {
+            return null;
+        }
+        TreeNode node = new TreeNode(array[index]);
+
+        if (2 * index + 1 < length) {
+            node.left = fullBinaryTree1(2 * index + 1);
+        }
+
+        if (2 * index + 2 < length) {
+            node.right = fullBinaryTree1(2 * index + 2);
+        }
+
+        return node;
+    }
+
+    public TreeNode fullBinaryTree1() {
+        return fullBinaryTree1(0);
     }
 
     public static void main(String[] args) {
@@ -57,6 +86,7 @@ public class CompleteBinaryTree {
          */
         int[] array = {1, 2, 3, 4, 5, 6, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
-        completeBinaryTree.fullBinaryTree(new TreeNode(1), 0);
+//        completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
+        completeBinaryTree.fullBinaryTree1();
     }
 }
