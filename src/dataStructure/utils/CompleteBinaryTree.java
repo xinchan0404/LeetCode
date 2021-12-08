@@ -9,7 +9,7 @@ public class CompleteBinaryTree {
      * instance field
      */
     public TreeNode root;
-    public int[] array;
+    public Integer[] array;
     public int length;
 
     /**
@@ -17,7 +17,7 @@ public class CompleteBinaryTree {
      *
      * @param array
      */
-    public CompleteBinaryTree(int[] array) {
+    public CompleteBinaryTree(Integer[] array) {
         this.array = array;
         this.length = array.length;
     }
@@ -34,6 +34,7 @@ public class CompleteBinaryTree {
         if (root == null || index == 0) {
             root = new TreeNode(array[0]);
         }
+
         /*
          * 添加左子树节点
          */
@@ -55,38 +56,58 @@ public class CompleteBinaryTree {
         return root;
     }
 
-    public TreeNode fullBinaryTree() {
-        return fullBinaryTree(null, 0);
-    }
-
-    public TreeNode fullBinaryTree1(int index) {
+    /**
+     * 根据顺序数组构造一颗 满二叉树 - 递归
+     *
+     * @param index
+     * @return
+     */
+    public TreeNode fullBinaryTree(int index) {
         if (array == null || length == 0) {
             return null;
         }
-        TreeNode node = new TreeNode(array[index]);
+        TreeNode node = null;
+        if (array[index] != null) {
+            node = new TreeNode(array[index]);
 
-        if (2 * index + 1 < length) {
-            node.left = fullBinaryTree1(2 * index + 1);
-        }
+            if (2 * index + 1 < length) {
+                node.left = fullBinaryTree(2 * index + 1);
+            }
 
-        if (2 * index + 2 < length) {
-            node.right = fullBinaryTree1(2 * index + 2);
+            if (2 * index + 2 < length) {
+                node.right = fullBinaryTree(2 * index + 2);
+            }
         }
 
         return node;
     }
 
-    public TreeNode fullBinaryTree1() {
-        return fullBinaryTree1(0);
+    /*
+     * Overloading
+     */
+    public TreeNode fullBinaryTree() {
+        return fullBinaryTree(0);
+    }
+
+    /*
+     * 前序遍历
+     */
+    public void preOrder() {
+        if (root != null) {
+            root.preOrder();
+            System.out.println(" null");
+        } else {
+            System.out.println("树为空，无法遍历~~");
+        }
     }
 
     public static void main(String[] args) {
         /*
          * 根据数组创建满二叉树
          */
-        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        Integer[] array = {1, 2, 3, 4, null, null, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
-//        completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.fullBinaryTree1();
+        completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
+        completeBinaryTree.preOrder();
     }
 }

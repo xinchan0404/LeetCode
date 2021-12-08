@@ -32,4 +32,28 @@ public class TreeNode {
     public String toString() {
         return "{" + "val=" + val + "}";
     }
+
+    /**
+     * 前序遍历，根左右 - 递归
+     */
+    public void preOrder() {
+        /*
+         * 根：访问当前节点
+         */
+        System.out.print(this + " --> ");
+
+        /*
+         * 左：访问当前节点左子节点
+         */
+        if (this.left != null) {
+            this.left.preOrder();
+        }
+
+        /*
+         * 右：访问当前节点右子节点
+         */
+        if (this.right != null) {
+            this.right.preOrder();
+        }
+    }
 }
