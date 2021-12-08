@@ -4,6 +4,8 @@ import dataStructure.utils.CompleteBinaryTree;
 import dataStructure.utils.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class PreOrderTraversal {
         completeBinaryTree.preOrder();
 
         List<Integer> list;
-        list = preorderTraversal1(completeBinaryTree.root);
+        list = preorderTraversal2(completeBinaryTree.root);
         System.out.println(list);
     }
 
@@ -82,5 +84,32 @@ public class PreOrderTraversal {
         list.add(root.val);
         preorder(root.left, list);
         preorder(root.right, list);
+    }
+
+    /**
+     * 二叉树的前序遍历 - 迭代
+     *
+     * @param root
+     */
+    public static List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        if (root == null) {
+            return list;
+        }
+
+        TreeNode tmp = root;
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (!stack.isEmpty() || tmp != null) {
+            while (tmp != null) {
+                list.add(tmp.val);
+                stack.push(tmp);
+                tmp = tmp.left;
+            }
+            tmp = stack.poll();
+            tmp = tmp.right;
+        }
+
+        return list;
     }
 }

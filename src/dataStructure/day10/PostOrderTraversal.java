@@ -4,6 +4,8 @@ import dataStructure.utils.CompleteBinaryTree;
 import dataStructure.utils.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -67,7 +69,7 @@ public class PostOrderTraversal {
     }
 
     /**
-     * 二叉树的前序遍历 - 递归函数
+     * 二叉树的后序遍历 - 递归函数
      *
      * @param root
      * @param list
@@ -80,5 +82,37 @@ public class PostOrderTraversal {
         postorder(root.left, list);
         postorder(root.right, list);
         list.add(root.val);
+    }
+
+    /**
+     * 二叉树的后续遍历 - 迭代
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        if (root == null) {
+            return list;
+        }
+
+        TreeNode tmp = root;
+        Deque<TreeNode> stack = new LinkedList<>();
+        while (!stack.isEmpty() || tmp != null) {
+            while (tmp != null) {
+                stack.push(tmp);
+                tmp = tmp.left;
+            }
+            tmp = stack.pop();
+            while (tmp != null) {
+                stack.push(tmp);
+                tmp = tmp.right;
+            }
+            tmp = stack.pop();
+            list.add(tmp.val);
+        }
+
+        return list;
     }
 }
