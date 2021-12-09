@@ -10,12 +10,12 @@ package dailyTopic;
  * @author xinchan
  * @version 1.0.1 2021-12-09
  */
-public class ValidTicTacToe {
+public class Daily1209 {
     public static void main(String[] args) {
         /*
          * 测试 validTicTacToe()
          */
-        String[] board = {"OXX", "XOX", "OXO"};
+        String[] board = {"OOO", "XXO", "XXX"};
 
         boolean validTicTacToe = validTicTacToe(board);
 
@@ -44,7 +44,7 @@ public class ValidTicTacToe {
         /*
          * 有一方胜利：X 或 O
          */
-        if (win(board, 'X') && xNums - oNums == 1) {
+        if (win(board, 'X')  && !win(board, 'O') && xNums - oNums == 1) {
             return true;
         }
         if (win(board, 'O') && !win(board, 'X') && xNums == oNums) {
@@ -53,10 +53,7 @@ public class ValidTicTacToe {
         /*
          * 没有胜利方
          */
-        if ((xNums == oNums || xNums - oNums == 1) && !win(board, 'X')) {
-            return true;
-        }
-        if (xNums == oNums && !win(board, 'O') && !win(board, 'X')) {
+        if (!win(board, 'X') && !win(board, 'O') && (xNums == oNums || xNums - oNums == 1)) {
             return true;
         }
 
