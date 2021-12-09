@@ -26,7 +26,7 @@ public class PostOrderTraversal {
          * 测试 postorderTraversal()
          */
         List<Integer> list;
-        list = postorderTraversal1(completeBinaryTree.root);
+        list = postorderTraversal2(completeBinaryTree.root);
         System.out.println(list);
     }
 
@@ -90,7 +90,7 @@ public class PostOrderTraversal {
      * @param root
      * @return
      */
-    public List<Integer> postorderTraversal2(TreeNode root) {
+    public static List<Integer> postorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
         if (root == null) {
@@ -98,6 +98,7 @@ public class PostOrderTraversal {
         }
 
         TreeNode tmp = root;
+        TreeNode pre = null;
         Deque<TreeNode> stack = new LinkedList<>();
         while (!stack.isEmpty() || tmp != null) {
             while (tmp != null) {
@@ -105,12 +106,14 @@ public class PostOrderTraversal {
                 tmp = tmp.left;
             }
             tmp = stack.pop();
-            while (tmp != null) {
+            if (tmp.right == null || tmp.right == pre) {
+                list.add(tmp.val);
+                pre = tmp;
+                tmp = null;
+            } else {
                 stack.push(tmp);
                 tmp = tmp.right;
             }
-            tmp = stack.pop();
-            list.add(tmp.val);
         }
 
         return list;
