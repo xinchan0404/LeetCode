@@ -18,14 +18,15 @@ public class HashPathSum {
         /*
          * 创建二叉树
          */
-        Integer[] array = {1, 2, 3, 4, 5, 6, 7};
+        Integer[] array = {1, 2, 3, 4, 5, 6, 7, null, null, 10, 11, null, null, null, null};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
+        completeBinaryTree.preOrder();
 
         /*
          * 测试
          */
-        boolean flag = hasPathSum(completeBinaryTree.root, 6);
+        boolean flag = hasPathSum(completeBinaryTree.root, 10);
         System.out.println(flag);
     }
 
@@ -55,11 +56,10 @@ public class HashPathSum {
         if (root.right != null) {
             dfs(root.right, tatgetSum);
         }
-        if (root.left == null && root.right == null) {
-            if (sum == tatgetSum) flag = true;
-            else {
-                sum -= root.val;
-            }
+        if (sum == tatgetSum) {
+            flag = true;
+        } else {
+            sum -= root.val;
         }
     }
 }
