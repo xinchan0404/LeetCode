@@ -15,7 +15,10 @@ public class IsSymmetric {
         /*
          * 创建二叉树
          */
-        Integer[] array = {1, 2, 2, 3, 4, 4, 3};
+//        Integer[] array = {1, 2, 2, 3, 4, 4, 3};
+//        Integer[] array = {1, 1, 2, 3, 4, 4, 3};
+//        Integer[] array = {1, 2, 2, 3, null, 3, null};
+        Integer[] array = {1, 2, 2, 3, null, null, 3};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
         completeBinaryTree.preOrder();
@@ -23,11 +26,12 @@ public class IsSymmetric {
         /*
          * 测试 isSymmetric()
          */
-
+        boolean isSymmetric = isSymmetric(completeBinaryTree.root);
+        System.out.println(isSymmetric);
     }
 
     /**
-     * 二叉树是否是对称的 - 广度优先搜索（BFS）
+     * 二叉树是否是对称的 - 广度优先搜索（BFS）、队列
      *
      * @param root
      * @return
@@ -41,17 +45,36 @@ public class IsSymmetric {
         }
 
         Deque<TreeNode> deque = new LinkedList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
         deque.add(root.left);
         deque.add(root.right);
         while (!deque.isEmpty()) {
             int dequeSize = deque.size();
-            for (int i = 0; i < dequeSize; i++) {
+            for (int i = 0; i < dequeSize / 2; i++) {
                 TreeNode node = deque.remove();
+                stack.push(node);
+                if (node == null) {
+                    continue;
+                }
+                deque.add(node.left);
+                deque.add(node.right);
+            }
+
+            for (int i = dequeSize / 2; i < dequeSize; i++) {
+                TreeNode node = deque.remove();
+                if (stack.peek() == null && node == null) {
+                    stack.pop();
+                    continue;
+                }
+                if ((stack.peek() == null || node == null) || (stack.peek().val != node.val)) {
+                    return false;
+                }
+                stack.pop();
                 deque.add(node.left);
                 deque.add(node.right);
             }
         }
-        
+
         return true;
     }
 }
