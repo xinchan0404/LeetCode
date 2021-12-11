@@ -14,11 +14,15 @@ import dataStructure.utils.TreeNode;
  * @version 1.0.1 2021-12-10
  */
 public class HashPathSum {
+    static boolean flag = false;
+
     public static void main(String[] args) {
         /*
          * 创建二叉树
          */
         Integer[] array = {1, 2, 3, 4, 5, 6, 7, null, null, 10, 11, null, null, null, null};
+//        Integer[] array = {1, 2};
+        int targetSum = 18;
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
         completeBinaryTree.preOrder();
@@ -26,8 +30,8 @@ public class HashPathSum {
         /*
          * 测试
          */
-        boolean flag = hasPathSum(completeBinaryTree.root, 10);
-        System.out.println(flag);
+        boolean hasPathSum = hasPathSum(completeBinaryTree.root, targetSum);
+        System.out.println(hasPathSum);
     }
 
     /**
@@ -37,29 +41,33 @@ public class HashPathSum {
      * @param targetSum
      * @return
      */
-    static int sum = 0;
-    static boolean flag = false;
-
     public static boolean hasPathSum(TreeNode root, int targetSum) {
         if (root == null) {
             return false;
         }
-        dfs(root, targetSum);
+
+        int sum = root.val;
+        dfs(root, targetSum, sum);
         return flag;
     }
 
-    public static void dfs(TreeNode root, int tatgetSum) {
-        sum += root.val;
+    /**
+     * 深度优先搜索-DFS：前序遍历-根左右
+     *
+     * @param root
+     * @param targetSum
+     * @param sum
+     */
+    public static void dfs(TreeNode root, int targetSum, int sum) {
         if (root.left != null) {
-            dfs(root.left, tatgetSum);
+            dfs(root.left, targetSum, sum + root.left.val);
         }
         if (root.right != null) {
-            dfs(root.right, tatgetSum);
+            dfs(root.right, targetSum, sum + root.right.val);
         }
-        if (sum == tatgetSum) {
+        if (root.left == null && root.right == null && sum == targetSum) {
             flag = true;
-        } else {
-            sum -= root.val;
         }
+        sum -= root.val;
     }
 }
