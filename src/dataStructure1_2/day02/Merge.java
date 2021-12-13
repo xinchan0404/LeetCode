@@ -23,16 +23,16 @@ public class Merge {
 
 //        int[] nums1 = {1, 2, 3, 0, 0, 0};
 //        int[] nums2 = {2, 5, 6};
-//        int[] nums1 = {1, 2, 3, 0, 0, 0};
-//        int[] nums2 = {4, 5, 6};
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums2 = {4, 5, 6};
 //        int[] nums1 = {4, 5, 6, 0, 0, 0};
 //        int[] nums2 = {1, 2, 3};
-        int[] nums1 = {0};
-        int[] nums2 = {1};
-        int m = 0;
-        int n = 1;
+//        int[] nums1 = {0};
+//        int[] nums2 = {1};
+        int m = 3;
+        int n = 3;
 
-        merge.merge2(nums1, m, nums2, n);
+        merge.merge1(nums1, m, nums2, n);
 
         System.out.println(Arrays.toString(nums1));
     }
@@ -72,10 +72,8 @@ public class Merge {
             } else if (p2 == n) {
                 System.arraycopy(nums1Copy, p1, nums1, cur, m - p1);
                 break;
-            } else if (nums1Copy[p1] <= nums2[p2]) {
-                nums1[cur++] = nums1Copy[p1++];
             } else {
-                nums1[cur++] = nums2[p2++];
+                nums1[cur++] = nums1Copy[p1] <= nums2[p2]? nums1Copy[p1++] : nums2[p2++];
             }
         }
     }
@@ -99,10 +97,8 @@ public class Merge {
                 break;
             } else if (p2 == -1) {
                 break;
-            } else if (nums1[p1] > nums2[p2]) {
-                nums1[cur--] = nums1[p1--];
-            } else if (nums1[p1] <= nums2[p2]) {
-                nums1[cur--] = nums2[p2--];
+            } else {
+                nums1[cur--] = nums1[p1] <= nums2[p2]? nums2[p2--] : nums1[p1--];
             }
         }
     }
