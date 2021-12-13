@@ -1,8 +1,7 @@
-package offer.day01;
+package offerLeetCode.day01;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * 剑指 Offer 30. 包含min函数的栈-空间换时间、辅助栈存储当前最小值

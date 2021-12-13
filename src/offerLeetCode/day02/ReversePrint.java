@@ -1,4 +1,4 @@
-package offer.day02;
+package offerLeetCode.day02;
 
 import java.util.Arrays;
 import java.util.Deque;

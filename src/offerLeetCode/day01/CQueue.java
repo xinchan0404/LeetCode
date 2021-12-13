@@ -1,7 +1,6 @@
-package offer.day01;
+package offerLeetCode.day01;
 
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * 剑指 Offer 09. 用两个栈实现队列

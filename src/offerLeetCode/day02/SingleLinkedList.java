@@ -1,4 +1,4 @@
-package offer.day02;
+package offerLeetCode.day02;
 
 /**
  * 一个不带头节点的单链表
