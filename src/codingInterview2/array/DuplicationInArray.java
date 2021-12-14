@@ -11,12 +11,12 @@ import java.util.Set;
  * @author xinchan
  * @version 1.0.1 2021-12-13
  */
-public class FindRepeatNumber {
+public class DuplicationInArray {
     public static void main(String[] args) {
         /*
          * 测试 findRepeatNumber()
          */
-        FindRepeatNumber findRepeatNumber = new FindRepeatNumber();
+        DuplicationInArray findRepeatNumber = new DuplicationInArray();
 
         int[] nums = {2, 3, 1, 0, 2, 5, 3};
 
