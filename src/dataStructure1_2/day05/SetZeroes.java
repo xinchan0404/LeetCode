@@ -68,14 +68,20 @@ public class SetZeroes {
         int m = matrix.length;
         int n = matrix[0].length;
 
-        for (int i = 0; i < m; i++) {
+        /*
+         * 第一行是否包含 0
+         */
+        for (int i = 0; i < n; i++) {
             if (matrix[0][i] == 0) {
                 firstRow = true;
                 break;
             }
         }
 
-        for (int i = 0; i < n; i++) {
+        /*
+         * 第一列是否包含 0
+         */
+        for (int i = 0; i < m; i++) {
             if (matrix[i][0] == 0) {
                 firstColumn = true;
                 break;

@@ -28,11 +28,9 @@ public class CQueue {
     }
 
     public int deleteHead() {
-        int popElement;
+        int popElement = -1;
         if (stack2.isEmpty()) {
-            if (stack1.isEmpty()) {
-                return -1;
-            } else {
+            if (!stack1.isEmpty()) {
                 while (!stack1.isEmpty()) {
                     stack2.push(stack1.pop());
                 }

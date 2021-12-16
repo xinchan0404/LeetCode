@@ -1,10 +1,17 @@
 package offerLeetCode.day02;
 
+import offerLeetCode.utils.ListNode;
+import offerLeetCode.utils.SingleLinkedList;
+
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
 /**
+ * 剑指 Offer 06. 从尾到头打印链表
+ * 限制：
+ * 0 <= 链表长度 <= 10000
+ *
  * @author xinchan
  * @version 1.0.1 2021-11-27
  */
@@ -14,41 +21,46 @@ public class ReversePrint {
          * 创建单链表并插入节点
          */
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-
-        singleLinkedList.add(new ListNode(1));
-        singleLinkedList.add(new ListNode(2));
-        singleLinkedList.add(new ListNode(3));
-
-        ListNode head = singleLinkedList.getHead();
+        int[] array = {1, 3, 2};
+        singleLinkedList.createSingleLInkedList(array);
+        singleLinkedList.traversal();
+        ListNode head = singleLinkedList.head;
 
         /*
          * 测试 reversePrint()
          */
-        int[] res = reversePrint(head);
+        ReversePrint reversePrint = new ReversePrint();
 
-        System.out.println(Arrays.toString(res));
+        int[] reverseArray = new int[0];
+
+        long startMs = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            reverseArray = reversePrint.reversePrint(head);
+        }
+        long costMs = System.currentTimeMillis() - startMs;
+        System.out.println("耗时：" + costMs + " ms");
+
+        System.out.println(Arrays.toString(reverseArray));
     }
 
     /**
-     * 剑指 Offer 06. 从尾到头打印链表
-     * 限制：
-     * 1. 0 <= 链表长度 <= 10000
+     * 从尾到头打印链表 - 逆序 ==> 堆栈
      *
      * @param head
      * @return
      */
-    public static int[] reversePrint(ListNode head) {
+    public int[] reversePrint(ListNode head) {
         Deque<Integer> stack = new LinkedList<>();
         ListNode tmp = head;
 
-        while (tmp.getNext() != null) {
-            tmp = tmp.getNext();
-            stack.push(tmp.getValue());
+        while (tmp != null) {
+            stack.push(tmp.val);
+            tmp = tmp.next;
         }
 
-        int[] res = new int[stack.size()];
-        int len = stack.size();
-        for (int i = 0; i < len; i++) {
+        int size = stack.size();
+        int[] res = new int[size];
+        for (int i = 0; i < size; i++) {
             res[i] = stack.pop();
         }
 

@@ -12,39 +12,38 @@ import java.util.LinkedList;
  * @version 1.0.1 2021-11-27
  */
 public class MinStack {
-    // instance field
+    /*
+     * instance field
+     */
     private Deque<Integer> minStack;
     private Deque<Integer> minValue;  // 记录当前堆栈最小值
 
-    // constructor
+    /*
+     * constructor
+     */
     public MinStack() {
         this.minStack = new LinkedList<>();
         this.minValue = new LinkedList<>();
     }
 
-    // methods
-
+    /*
+     * methods
+     */
     /**
      * 入栈
-     * 其实还可以简单优化一下，如果入栈的值比当前最小大，不必更新辅助栈
      * @param x
      */
     public void push(int x) {
         minStack.push(x);
-        if (minValue.isEmpty()) {
+        if (minValue.isEmpty() || minValue.peek() >= x) {
             minValue.push(x);
-        } else {
-            if (minValue.peek() < x) {
-                minValue.push(minValue.peek());
-            } else {
-                minValue.push(x);
-            }
         }
     }
 
     public void pop() {
-        minStack.pop();
-        minValue.pop();
+        if (minStack.pop() <= minValue.peek()) {
+            minValue.pop();
+        }
     }
 
     public int top() {
@@ -56,24 +55,30 @@ public class MinStack {
     }
 
     public static void main(String[] args) {
-        int min;
-        int top;
+        int min1 = 0;
+        int min2 = 0;
+        int top = 0;
+        long startMs = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            MinStack minStack = new MinStack();
+            minStack.push(-2);
+            minStack.push(0);
+            minStack.push(-3);
 
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
+            min1 = minStack.min();
 
-        min = minStack.min();
-        System.out.println(min);
+            minStack.pop();
 
-        minStack.pop();
+            top = minStack.top();
 
-        top = minStack.top();
+            min2 = minStack.min();
+        }
+        long costMs = System.currentTimeMillis() - startMs;
+        System.out.println("耗时：" + costMs + " ms");
+
+        System.out.println(min1);
         System.out.println(top);
-
-        min = minStack.min();
-        System.out.println(min);
+        System.out.println(min2);
     }
 }
 
