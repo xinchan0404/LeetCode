@@ -1,4 +1,4 @@
-package offerLeetCode.day02;
+package codingInterviewLeetCode.day02.randomLinkedList;
 
 /**
  * @author xinchan

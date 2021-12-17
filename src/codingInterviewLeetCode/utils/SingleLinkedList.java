@@ -1,4 +1,4 @@
-package offerLeetCode.utils;
+package codingInterviewLeetCode.utils;
 
 /**
  * 一个不带头节点的单链表
