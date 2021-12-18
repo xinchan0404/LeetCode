@@ -1,4 +1,4 @@
-package dataStructure1_1.utils;
+package utils;
 
 /**
  * @author xinchan

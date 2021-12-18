@@ -1,7 +1,7 @@
 package leetCode;
 
-import leetCode.utils.ListNode;
-import leetCode.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 /**
  * 86. 分隔链表
@@ -33,7 +33,7 @@ public class Partition {
 //        int[] array = {5,4,3,2,1};
 //        int x = 3;
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-        singleLinkedList.createSingleLInkedList(array);
+        singleLinkedList.createSingleLinkedList(array);
         singleLinkedList.traversal();
         ListNode head = singleLinkedList.head;
 

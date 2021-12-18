@@ -1,6 +1,6 @@
 package dataStructure1_1.day07;
 
-import dataStructure1_1.utils.ListNode;
+import utils.ListNode;
 
 /**
  * @author xinchan

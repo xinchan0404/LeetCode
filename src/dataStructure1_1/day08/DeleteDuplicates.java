@@ -1,7 +1,7 @@
 package dataStructure1_1.day08;
 
-import dataStructure1_1.utils.ListNode;
-import dataStructure1_1.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 /**
  * 83. 删除排序链表中的重复元素
@@ -29,8 +29,8 @@ public class DeleteDuplicates {
         /*
          * 测试 deleteDuplicates 方法
          */
-        ListNode newHead = deleteDuplicates(head);
-        SingleLinkedList.traversal(newHead);
+        singleLinkedList.head = deleteDuplicates(head);
+        singleLinkedList.traversal();
     }
 
     /**

@@ -1,12 +1,10 @@
 package dataStructure1_1.day08;
 
-import dataStructure1_1.utils.ListNode;
-import dataStructure1_1.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 import java.util.Deque;
 import java.util.LinkedList;
-
-import static dataStructure1_1.utils.SingleLinkedList.traversal;
 
 /**
  * @author xinchan
@@ -25,8 +23,8 @@ public class ReverseList {
         /*
          * 测试 reverseList 方法
          */
-        ListNode newHead = reverseList1(head);
-        traversal(newHead);
+        singleLinkedList.head = reverseList1(head);
+        singleLinkedList.traversal();
     }
 
     /**

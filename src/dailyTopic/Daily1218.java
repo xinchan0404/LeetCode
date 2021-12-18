@@ -17,12 +17,16 @@ public class Daily1218 {
          * 测试 countBattleships()
          */
         Daily1218 daily1218 = new Daily1218();
-        char[][] board = {};
         int countBattleships = 0;
 
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            countBattleships = daily1218.countBattleships(board);
+            char[][] board = {
+                    {'X', '.', '.', 'X'},
+                    {'.', 'X', '.', 'X'},
+                    {'X', '.', '.', 'X'}};
+//            countBattleships = daily1218.countBattleships(board);  // 1000000 次：46 ms
+            countBattleships = daily1218.countBattleships1(board);  // 1000000 次：44 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -31,11 +35,60 @@ public class Daily1218 {
     }
 
     /**
-     * 甲板上的战舰
+     * 甲板上的战舰 - 遍历扫描
+     *
      * @param board
      * @return
      */
-    public int countBattleships(char[][] board) {
+    public int countBattleships (char[][] board){
+        int counter = 0;
+        int m = board.length;
+        int n = board[0].length;
 
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'X') {
+                    board[i][j] = '.';
+                    for (int k = j + 1; k < n && board[i][k] == 'X'; k++) {
+                        board[i][k] = '.';
+                    }
+                    for (int k = i + 1; k < m && board[k][j] == 'X'; k++) {
+                        board[k][j] = '.';
+                    }
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
+    }
+
+    /**
+     * 甲板上的战舰 - 枚举起点
+     * @param board
+     * @return
+     */
+    public int countBattleships1(char[][] board) {
+        int counter = 0;
+        int m = board.length;
+        int n = board[0].length;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'X') {
+                    // 如果非第一列，检查当前方格的左边方格是否为 'X'
+                    if (j > 0 && board[i][j - 1] == 'X') {
+                        continue;
+                    }
+                    // 如果非第一行，检查当前方格的上边方格是否为 'X'
+                    if (i > 0 && board[i - 1][j] == 'X') {
+                        continue;
+                    }
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
     }
 }

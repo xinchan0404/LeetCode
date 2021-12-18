@@ -1,7 +1,7 @@
 package codingInterviewLeetCode.day02;
 
-import codingInterviewLeetCode.utils.ListNode;
-import codingInterviewLeetCode.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -21,7 +21,7 @@ public class ReverseList {
          */
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         int[] array = {1, 2, 3, 4, 5};
-        singleLinkedList.createSingleLInkedList(array);
+        singleLinkedList.createSingleLinkedList(array);
         singleLinkedList.traversal();
         ListNode head = singleLinkedList.head;
 

@@ -1,7 +1,7 @@
 package dataStructure1_1.day07;
 
-import dataStructure1_1.utils.ListNode;
-import dataStructure1_1.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 /**
  * 21. 合并两个有序链表

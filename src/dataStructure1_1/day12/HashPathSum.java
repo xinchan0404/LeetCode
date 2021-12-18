@@ -1,7 +1,7 @@
 package dataStructure1_1.day12;
 
-import dataStructure1_1.utils.CompleteBinaryTree;
-import dataStructure1_1.utils.TreeNode;
+import utils.CompleteBinaryTree;
+import utils.TreeNode;
 
 /**
  * 112. 路径总和

@@ -1,7 +1,7 @@
 package dataStructure1_1.day07;
 
-import dataStructure1_1.utils.ListNode;
-import dataStructure1_1.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 /**
  * 203. 移除链表元素
@@ -22,15 +22,15 @@ public class RemoveElements {
 //        int[] array = {7, 7, 7, 7};
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         singleLinkedList.createSingleLinkedList(array);
+        singleLinkedList.traversal();
         ListNode head = singleLinkedList.head;
 
         /*
          * 测试 RemoveElements 方法
          */
         int val = 6;
-
-        ListNode newHead = removeElements1(head, val);
-        SingleLinkedList.traversal(newHead);
+        singleLinkedList.head = removeElements1(head, val);
+        singleLinkedList.traversal();
     }
 
     /**

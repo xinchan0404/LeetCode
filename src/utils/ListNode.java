@@ -1,4 +1,4 @@
-package codingInterviewLeetCode.utils;
+package utils;
 
 /**
  * @author xinchan

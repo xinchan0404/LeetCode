@@ -1,7 +1,7 @@
 package codingInterviewLeetCode.day02;
 
-import codingInterviewLeetCode.utils.ListNode;
-import codingInterviewLeetCode.utils.SingleLinkedList;
+import utils.ListNode;
+import utils.SingleLinkedList;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -22,7 +22,7 @@ public class ReversePrint {
          */
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         int[] array = {1, 3, 2};
-        singleLinkedList.createSingleLInkedList(array);
+        singleLinkedList.createSingleLinkedList(array);
         singleLinkedList.traversal();
         ListNode head = singleLinkedList.head;
 

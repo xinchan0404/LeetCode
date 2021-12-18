@@ -1,4 +1,4 @@
-package codingInterviewLeetCode.utils;
+package utils;
 
 /**
  * 一个不带头节点的单链表
@@ -21,7 +21,6 @@ public class SingleLinkedList {
     /*
      * methods
      */
-
     /**
      * 添加新节点
      *
@@ -48,7 +47,7 @@ public class SingleLinkedList {
      *
      * @param array
      */
-    public void createSingleLInkedList(int[] array) {
+    public void createSingleLinkedList(int[] array) {
         head = new ListNode(array[0]);
 
         ListNode tmp = head;
