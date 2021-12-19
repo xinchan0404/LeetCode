@@ -23,7 +23,7 @@ public class HasCycle {
          */
         CycleLinkedList cycleLinkedList = new CycleLinkedList();
         int[] array = {3, 2, 0, -4};
-        int pos = 0;
+        int pos = 1;
         cycleLinkedList.createCycleLinkedList(array, pos);
         cycleLinkedList.traversal();
         ListNode head = cycleLinkedList.head;
@@ -36,7 +36,8 @@ public class HasCycle {
 
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            hasOrNot = hasCycle.hasCycle(head);  // 1000000 次: 50 ms
+//            hasOrNot = hasCycle.hasCycle(head);  // 1000000 次: 50 ms
+            hasOrNot = hasCycle.hasCycle1(head);  // 1000000 次: 16 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("\n耗时：" + costMs + " ms");
@@ -65,7 +66,7 @@ public class HasCycle {
     }
 
     /**
-     * 环形链表 - 快慢指针， Floy算法
+     * 环形链表 - 快慢指针， Floyd判圈算法
      *
      * @param head
      * @return
@@ -77,8 +78,14 @@ public class HasCycle {
 
         ListNode slow = head;
         ListNode fast = head.next;
-        while (true) {
-
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            fast = fast.next.next;
+            slow = slow.next;
         }
+
+        return true;
     }
 }
