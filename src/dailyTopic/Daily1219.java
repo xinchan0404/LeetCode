@@ -24,15 +24,16 @@ public class Daily1219 {
          * 测试 findJudge()
          */
         Daily1219 daily1219 = new Daily1219();
-//        int[][] trust = {{1, 3}, {2, 3}, {3, 1}};
-//        int n = 3;
-        int[][] trust = {};
-        int n = 1;
+        int[][] trust = {{1, 3}, {2, 3}, {3, 1}};
+        int n = 3;
+//        int[][] trust = {};
+//        int n = 1;
         int judge = 0;
 
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            judge = daily1219.findJudge(n, trust);
+//            judge = daily1219.findJudge(n, trust);  // 1000000: 53 ms
+            judge = daily1219.findJudge1(n, trust);  // 1000000: 46 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -41,7 +42,7 @@ public class Daily1219 {
     }
 
     /**
-     * 找到小镇的法官
+     * 找到小镇的法官 - 暴力遍历统计
      *
      * @param n
      * @param trust
@@ -75,6 +76,34 @@ public class Daily1219 {
             }
             if (trustJudge == n - 1 && flag) {
                 return judge;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 找到小镇的法官 - 有向图的出度和入度
+     *
+     * @param n
+     * @param trust
+     * @return
+     */
+    public int findJudge1(int n, int[][] trust) {
+        int[] inDegrees = new int[n];
+        int[] outDegrees = new int[n];
+
+        for (int[] edge : trust) {
+            int out = edge[0];
+            int in = edge[1];
+
+            inDegrees[in - 1]++;
+            outDegrees[out - 1]++;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (inDegrees[i] == n - 1 && outDegrees[i] == 0) {
+                return i;
             }
         }
 
