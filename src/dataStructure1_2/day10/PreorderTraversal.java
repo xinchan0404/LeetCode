@@ -103,5 +103,7 @@ public class PreorderTraversal {
 
             }
         }
+
+        return null;
     }
 }
