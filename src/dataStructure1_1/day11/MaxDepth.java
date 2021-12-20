@@ -21,7 +21,7 @@ public class MaxDepth {
 //        Integer[] array = {1, 2, 3, 4, 5, 6, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
 
         /*
          * 测试 maxDepth()

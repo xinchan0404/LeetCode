@@ -23,7 +23,7 @@ public class IsSymmetric {
         Integer[] array = {1, 2, 2, 3, null, null, 3};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
 
         /*
          * 测试 isSymmetric()

@@ -21,13 +21,13 @@ public class InvertTree {
         Integer[] array = {1, 2, 3, 4, null, 6, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
 
         /*
          * 测试 invertTree()
          */
         completeBinaryTree.root = invertTree1(completeBinaryTree.root);
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
     }
 
     /**

@@ -2,7 +2,7 @@ package utils;
 
 /**
  * @author xinchan
- * @version 1.0.1 2021-12-07
+ * @version 1.0.1 2021-12-20
  */
 public class TreeNode {
     /*
@@ -15,11 +15,11 @@ public class TreeNode {
     /*
      * constructor
      */
-    public TreeNode(int val) {
+    TreeNode(int val) {
         this.val = val;
     }
 
-    public TreeNode(int val, TreeNode left, TreeNode right) {
+    TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -28,32 +28,34 @@ public class TreeNode {
     /*
      * methods
      */
-    @Override
-    public String toString() {
-        return "{" + "val=" + val + "}";
-    }
 
     /**
-     * 前序遍历，根左右 - 递归
+     * 前序遍历 - 根左右
+     *
      */
-    public void preOrder() {
+    public void preorder() {
         /*
-         * 根：访问当前节点
+         * 根节点：相关操作
          */
-        System.out.print(this + " --> ");
+        System.out.print(this + "==>");
 
         /*
-         * 左：访问当前节点左子节点
+         * 左子树：左子节点非空，递归左子树
          */
         if (this.left != null) {
-            this.left.preOrder();
+            this.left.preorder();
         }
 
         /*
-         * 右：访问当前节点右子节点
+         * 右子树：右子节点非空，递归右子树
          */
         if (this.right != null) {
-            this.right.preOrder();
+            this.right.preorder();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "val=" + val + '}';
     }
 }

@@ -25,7 +25,7 @@ public class HashPathSum {
         int targetSum = 18;
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
 
         /*
          * 测试

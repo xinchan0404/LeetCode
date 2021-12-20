@@ -20,7 +20,7 @@ public class PostOrderTraversal {
         Integer[] array = {1, 2, 3, 4, null, null, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
-        completeBinaryTree.preOrder();
+        completeBinaryTree.preorder();
 
         /*
          * 测试 postorderTraversal()
