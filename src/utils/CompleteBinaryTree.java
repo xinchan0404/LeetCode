@@ -101,6 +101,30 @@ public class CompleteBinaryTree {
         }
     }
 
+    /**
+     * 二叉树的中序遍历 - 左根右
+     */
+    public void inorder() {
+        if (root != null) {
+            root.inorder();
+            System.out.println(" null");
+        } else {
+            System.out.println("二叉树为空，无法遍历~~");
+        }
+    }
+
+    /**
+     * 二叉树的后序遍历 - 左右根
+     */
+    public void postorder() {
+        if (root != null) {
+            root.postorder();
+            System.out.println(" null");
+        } else {
+            System.out.println("二叉树为空，无法遍历~~");
+        }
+    }
+
     public static void main(String[] args) {
         /*
          * 根据数组创建满二叉树
