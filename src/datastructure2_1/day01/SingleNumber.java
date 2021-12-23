@@ -1,6 +1,8 @@
 package datastructure2_1.day01;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 136. 只出现一次的数字
@@ -20,7 +22,9 @@ public class SingleNumber {
         int sn = 0;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            sn = singleNumber.singleNumber(nums);  // 1000000: 16 ms
+//            sn = singleNumber.singleNumber(nums);  // 1000000: 16 ms
+//            sn = singleNumber.singleNumber1(nums);  // 1000000: 16 ms
+            sn = singleNumber.singleNumber2(nums);  // 1000000: 125 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -45,5 +49,46 @@ public class SingleNumber {
         }
 
         return nums[len - 1];
+    }
+
+    /**
+     * 只出现一个的数字 - 异或运算
+     *
+     * @param nums
+     * @return
+     */
+    public int singleNumber1(int[] nums) {
+        int len = nums.length;
+        int singleNumber = 0;
+
+        for (int num : nums) {
+            singleNumber ^= num;
+        }
+
+        return singleNumber;
+    }
+
+    /**
+     * 只出现一次的数字 - HashSet
+     * @param nums
+     * @return
+     */
+    public int singleNumber2(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int num : nums) {
+            if (set.contains(num)) {
+                set.remove(num);
+            } else {
+                set.add(num);
+            }
+        }
+
+        int singleNumber = 0;
+        for (int num : set) {
+            singleNumber = num;
+        }
+
+        return singleNumber;
     }
 }
