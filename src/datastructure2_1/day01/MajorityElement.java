@@ -23,7 +23,8 @@ public class MajorityElement {
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
 //            majorityEle = majorityElement.majorityElement(nums);  // 1000000: 172 ms
-            majorityEle = majorityElement.majorityElement1(nums);  // 1000000: 172 ms
+//            majorityEle = majorityElement.majorityElement1(nums);  // 1000000: 172 ms
+            majorityEle = majorityElement.majorityElement2(nums);  // 1000000: 0 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -62,8 +63,48 @@ public class MajorityElement {
      */
     public int majorityElement1(int[] nums) {
         Arrays.sort(nums);
-        1,1,1,4;
-        1,2,2,2;
         return nums[nums.length / 2];
+    }
+
+    /**
+     * 多数元素 - BM 算法
+     *
+     * @param nums
+     * @return
+     */
+    public int majorityElement2(int[] nums) {
+        int candidate = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (candidate == num) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+
+    /**
+     * 多数元素 - 分治
+     *
+     * @param nums
+     * @return
+     */
+    public int majorityElement3(int[] nums) {
+        return majorityElementRec(nums, 0, nums.length);
+    }
+
+    /**
+     * 分治的递归
+     *
+     * @param nums
+     * @param left
+     * @param right
+     * @return
+     */
+    public int majorityElementRec(int[] nums, int left, int right) {
+
     }
 }
