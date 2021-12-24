@@ -105,6 +105,6 @@ public class MajorityElement {
      * @return
      */
     public int majorityElementRec(int[] nums, int left, int right) {
-
+        return 0;
     }
 }
