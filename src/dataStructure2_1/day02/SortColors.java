@@ -23,7 +23,7 @@ public class SortColors {
         for (int i = 0; i < 1000000; i++) {
             nums = new int[]{2, 0, 2, 1, 1, 0};
 //            sortColors.sortColors(nums);  // 1000000: 15 ms
-            sortColors.sortColors1(nums);  // 1000000: 15 ms
+            sortColors.sortColors1(nums);  // 1000000: 23 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -61,6 +61,28 @@ public class SortColors {
      * @param nums
      */
     public void sortColors1(int[] nums) {
+        int p0 = 0;
+        int p1 = 0;
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            if (nums[i] == 1) {
+                int tmp = nums[i];
+                nums[i] = nums[p1];
+                nums[p1] = tmp;
+                p1++;
+            } else if (nums[i] == 0) {
+                int tmp = nums[i];
+                nums[i] = nums[p0];
+                nums[p0] = tmp;
+                if (p0 < p1) {
+                    tmp = nums[i];
+                    nums[i] = nums[p1];
+                    nums[p1] = tmp;
+                }
 
+                p0++;
+                p1++;
+            }
+        }
     }
 }

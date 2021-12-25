@@ -1,4 +1,4 @@
-package datastructure2_1.day01;
+package dataStructure2_1.day01;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,28 +52,11 @@ public class SingleNumber {
     }
 
     /**
-     * 只出现一个的数字 - 异或运算
-     *
-     * @param nums
-     * @return
-     */
-    public int singleNumber1(int[] nums) {
-        int len = nums.length;
-        int singleNumber = 0;
-
-        for (int num : nums) {
-            singleNumber ^= num;
-        }
-
-        return singleNumber;
-    }
-
-    /**
      * 只出现一次的数字 - HashSet
      * @param nums
      * @return
      */
-    public int singleNumber2(int[] nums) {
+    public int singleNumber1(int[] nums) {
         Set<Integer> set = new HashSet<>();
 
         for (int num : nums) {
@@ -87,6 +70,23 @@ public class SingleNumber {
         int singleNumber = 0;
         for (int num : set) {
             singleNumber = num;
+        }
+
+        return singleNumber;
+    }
+
+    /**
+     * 只出现一个的数字 - 异或运算
+     *
+     * @param nums
+     * @return
+     */
+    public int singleNumber2(int[] nums) {
+        int len = nums.length;
+        int singleNumber = 0;
+
+        for (int num : nums) {
+            singleNumber ^= num;
         }
 
         return singleNumber;

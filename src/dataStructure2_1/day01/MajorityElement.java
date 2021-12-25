@@ -1,4 +1,4 @@
-package datastructure2_1.day01;
+package dataStructure2_1.day01;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -105,6 +105,7 @@ public class MajorityElement {
      * @return
      */
     public int majorityElementRec(int[] nums, int left, int right) {
+
         return 0;
     }
 }
