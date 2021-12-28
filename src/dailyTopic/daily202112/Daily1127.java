@@ -45,11 +45,8 @@ public class Daily1127 {
         int cnt = 0;
         int len = ages.length;
         for (int i = 0; i < len - 1; i++) {
-            int x = ages[i];
-            if (x > 14) {
-                int left = (int) (0.5 * ages[i]) + 8;  // y >= left
-                int right = ages[i];  // y <= right
-                cnt += binarySearch(ages, i + 1, len - 1, right) - binarySearch(ages, 0, i - 1, left);
+            if (ages[i] > 14) {
+                cnt += binarySearch(ages, i, len - 1, ages[i], len) - binarySearch(ages, 0, i - 1, ages[i] / 2 + 7, len) - 1;
             }
         }
 
@@ -65,15 +62,15 @@ public class Daily1127 {
      * @param target
      * @return
      */
-    private int binarySearch(int[] nums, int left, int right, int target) {
-        while (left < right) {
+    private int binarySearch(int[] nums, int left, int right, int target, int len) {
+        while (left <= right) {
             int mid = (right - left) / 2 + left;
             if (nums[mid] > target) {
                 right = mid - 1;
             } else if (nums[mid] < target) {
                 left = mid + 1;
             } else {
-                if (nums[mid + 1] == target) {
+                if (mid != len - 1 || nums[mid + 1] == target) {
                     left = mid + 1;
                 } else {
                     return mid;
