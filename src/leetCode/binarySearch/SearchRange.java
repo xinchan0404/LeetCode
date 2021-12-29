@@ -20,11 +20,11 @@ public class SearchRange {
          */
         SearchRange searchRange = new SearchRange();
         int[] nums = {5, 7, 7, 8, 8, 10};
-        int target = 4;
+        int target = 8;
         int[] range = new int[2];
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            range = searchRange.searchRange(nums, target);  // 1000000: 15 ms
+            range = searchRange.searchRange(nums, target);  // 1000000: 29 ms
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
@@ -40,47 +40,49 @@ public class SearchRange {
      * @return
      */
     public int[] searchRange(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return new int[0];
-        }
-        int[] range = new int[]{-1, -1};
+        int[] range = new int[2];
+
+        range[0] = binarySearch(nums, target, true);
+        range[1] = binarySearch(nums, target, false);
+
+        return range;
+    }
+
+    /**
+     * 二分查找
+     *
+     * @param nums
+     * @param target
+     * @param indexFlag true for leftIndex, false for rightIndex
+     * @return
+     */
+    private int binarySearch(int[] nums, int target, boolean indexFlag) {
         int n = nums.length;
         int left = 0;
         int right = n - 1;
         while (left <= right) {
             int mid = (left + right) >>> 1;
             if (nums[mid] > target) {
-                right = mid -1;
+                right = mid - 1;
             } else if (nums[mid] < target) {
                 left = mid + 1;
             } else {
-                if (mid != n - 1 && nums[mid + 1] == target) {
-                    left = mid + 1;
+                if (indexFlag) {
+                    if (mid != 0 && nums[mid - 1] == target) {
+                        right = mid - 1;
+                    } else {
+                        return mid;
+                    }
                 } else {
-                    range[1] = mid;
-                    break;
+                    if (mid != n - 1 && nums[mid + 1] == target) {
+                        left = mid + 1;
+                    } else {
+                        return mid;
+                    }
                 }
             }
         }
 
-        left = 0;
-        right = n - 1;
-        while (left <= right) {
-            int mid = (left + right) >>> 1;
-            if (nums[mid] > target) {
-                right = mid -1;
-            } else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                if (mid != 0 && nums[mid - 1] == target) {
-                    right = mid - 1;
-                } else {
-                    range[0] = mid;
-                    break;
-                }
-            }
-        }
-
-        return range;
+        return -1;
     }
 }
