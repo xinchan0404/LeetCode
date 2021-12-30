@@ -12,12 +12,12 @@ import java.util.Arrays;
  * @author xinchan
  * @version 1.0.1 2021-12-27
  */
-public class Daily1127 {
+public class Daily1227 {
     public static void main(String[] args) {
         /*
          * 测试 numFriendRequests()
          */
-        Daily1127 daily1127 = new Daily1127();
+        Daily1227 daily1127 = new Daily1227();
 //        int[] ages = {20, 30, 100, 110, 120};
 //        int[] ages = {16,17,18};
         int[] ages = {16, 16, 16, 17, 18};
