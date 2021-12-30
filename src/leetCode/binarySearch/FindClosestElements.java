@@ -80,11 +80,6 @@ public class FindClosestElements {
             int pos = binarySearch(arr, x, false);
             int left = pos - 1;
             int right = pos;
-//            if (arr[pos] == x) {
-//                right = pos + 1;
-//            } else {
-//                right = pos;
-//            }
             while (right - left - 1 < k) {
                 if (left < 0) {
                     right++;

@@ -18,7 +18,7 @@ public class Daily1230 {
          * 测试 isNStraightHand()
          */
         Daily1230 daily1230 = new Daily1230();
-        int[] head = {1, 2, 3, 6, 2, 3, 4, 7, 9};
+        int[] head = {1, 2, 3, 6, 2, 3, 4, 7, 8};
         int groupSize = 3;
         boolean isNStraightHand = false;
         long startMs = System.currentTimeMillis();
@@ -43,17 +43,22 @@ public class Daily1230 {
             return false;
         }
 
-        Map<Integer, Integer> map = new TreeMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int e : head) {
             map.put(e, map.getOrDefault(e, 0) + 1);
         }
 
         Arrays.sort(head);
-        for (Map.Entry<Integer, Integer> mapEntry : map.entrySet()) {
-            for (int i = 0; i < groupSize; i++) {
-                if (map.getOrDefault(e + i, 0) > 0) {
-                    map.put(e, map.get(e) - 1);
-                } else {
+        for (int e : head) {
+            if (map.getOrDefault(e, 0) > 0) {
+                map.put(e, map.get(e) - 1);
+                for (int i = 1; i < groupSize; i++) {
+                    if (map.getOrDefault(e + i, 0) > 0) {
+                        map.put(e + i, map.get(e + i) - 1);
+                    } else {
+                        return false;
+                    }
+                }
             }
         }
 
