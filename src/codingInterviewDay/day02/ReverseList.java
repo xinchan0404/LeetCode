@@ -1,10 +1,7 @@
-package codingInterviewLeetCode.day02;
+package codingInterviewDay.day02;
 
 import utils.ListNode;
 import utils.SingleLinkedList;
-
-import java.util.Deque;
-import java.util.LinkedList;
 
 /**
  * 剑指 Offer 24. 反转链表

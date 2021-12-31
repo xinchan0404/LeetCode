@@ -1,4 +1,4 @@
-package codingInterviewLeetCode.day02;
+package codingInterviewDay.day02;
 
 import utils.ListNode;
 import utils.SingleLinkedList;

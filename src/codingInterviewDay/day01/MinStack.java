@@ -1,4 +1,4 @@
-package codingInterviewLeetCode.day01;
+package codingInterviewDay.day01;
 
 import java.util.Deque;
 import java.util.LinkedList;

@@ -33,7 +33,8 @@ public class Daily1231 {
      */
     public boolean checkPerfectNumber(int num) {
         int sum = 0;
-        for (int i = 1; i <= (int) Math.sqrt(num); i++) {
+        int n = (int) Math.sqrt(num);
+        for (int i = 1; i <= n; i++) {
             if (num % i == 0) {
                 sum += num / i == i? i : i + num / i;
             }
