@@ -15,7 +15,7 @@ public class FindRepeatNumber {
          */
         FindRepeatNumber findRepeatNumber = new FindRepeatNumber();
 //        int[] nums = {2, 3, 1, 0, 2, 5, 3};
-        int[] nums = {3, 4, 2, 0, 0, 1};
+        int[] nums = {3, 4, 2, 0, 5, 1};
         int repeatNumber = -1;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
