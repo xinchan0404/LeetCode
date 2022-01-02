@@ -14,8 +14,8 @@ public class FindRepeatNumber {
          * 测试 findRepeatNumber()
          */
         FindRepeatNumber findRepeatNumber = new FindRepeatNumber();
-//        int[] nums = {2, 3, 1, 0, 2, 5, 3};
-        int[] nums = {3, 4, 2, 0, 5, 1};
+        // int[] nums = {2, 3, 1, 0, 2, 5, 3};
+        int[] nums = { 3, 4, 2, 0, 0, 1 };
         int repeatNumber = -1;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
@@ -38,16 +38,14 @@ public class FindRepeatNumber {
             if (nums[i] == i) {
                 continue;
             }
-            if (nums[nums[i]] == nums[i]) {
-                return nums[i];
-            }
             while (nums[i] != i) {
-                int num = nums[i];
-                nums[i] = nums[num];
-                nums[num] = num;
                 if (nums[i] == nums[nums[i]]) {
                     return nums[i];
                 }
+                int num = nums[i];
+                nums[i] = nums[num];
+                nums[num] = num;
+                
             }
         }
         return -1;

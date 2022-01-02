@@ -1,4 +1,4 @@
-package codingInterview2.array;
+package codingInterviewBook.array;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -13,8 +13,8 @@ package codingInterviewDay.day04;
 public class Search {
     public static void main(String[] args) {
         Search search = new Search();
-        int[] nums = { 5, 7, 7, 8, 8, 10 };
-        int target = 10;
+        int[] nums = { 5, 7, 7, 8, 8, 10};
+        int target = 8;
         int num = -1;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
@@ -33,7 +33,8 @@ public class Search {
      * @return
      */
     public int search(int[] nums, int target) {
-        return binarySearch(nums, target, false) == -1? 0 : binarySearch(nums, target, false) - binarySearch(nums, target, true) + 1;
+        return binarySearch(nums, target, false) == -1 ? 
+            0 : binarySearch(nums, target, false) - binarySearch(nums, target, true) + 1;
     }
 
     /**
