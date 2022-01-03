@@ -11,8 +11,8 @@ public class MinArray {
         MinArray minArray = new MinArray();
 //        int[] numbers = {3, 4, 5, 1, 2};
 //        int[] numbers = {2, 2, 2, 0, 1};
-        int[] numbers = {1, 2, 2, 3, 4};
-//        int[] numbers = {3, 3, 1, 3, 3};
+//        int[] numbers = {1, 2, 2, 3, 4};
+        int[] numbers = {3, 3, 3, 1, 3};
         int minVal = -1;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
@@ -32,21 +32,17 @@ public class MinArray {
     public int minArray(int[] numbers) {
         int left = 0;
         int right = numbers.length - 1;
-        if (numbers[left] < numbers[right]) {
-            return numbers[left];
-        }
 
-        while (left <= right) {
+        while (left < right) {
             int mid = (left + right) >>> 1;
             int midVal = numbers[mid];
 
-            if (numbers[left] <= midVal) {
+            if (numbers[right] < midVal) {
                 left = mid + 1;
-            } else {
+            } else if (numbers[right] > midVal) {
                 right = mid;
-            }
-            if (numbers[left] <= numbers[right]) {
-                return numbers[left];
+            } else {
+                 right--;
             }
         }
 
