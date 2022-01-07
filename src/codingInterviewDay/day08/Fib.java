@@ -9,7 +9,7 @@ package codingInterviewDay.day08;
 public class Fib {
     public static void main(String[] args) {
         Fib fib = new Fib();
-        int n = 2;
+        int n = 3;
         int fn = -1;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
@@ -21,12 +21,30 @@ public class Fib {
     }
 
     /**
-     * 斐波那契数列 - 动态规划
+     * 斐波那契数列 - 递归含有大量重复运算
      *
      * @param n
      * @return
      */
     public int fib(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+
+        return (fib(n - 1) + fib(n - 2)) % 1000000007;
+    }
+
+    /**
+     * 斐波那契数列 - 动态规划、滚动数组
+     *
+     * @param n
+     * @return
+     */
+    public int fib1(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+
         return 0;
     }
 }
