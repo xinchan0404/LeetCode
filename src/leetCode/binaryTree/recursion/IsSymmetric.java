@@ -76,9 +76,9 @@ public class IsSymmetric {
         /*
          * 创建二叉树
          */
-        Integer[] array = {1, 2, 2, 3, 4, 4, 3};
+//        Integer[] array = {1, 2, 2, 3, 4, 4, 3};
 //        Integer[] array = {1, 2, 2, null, 3, null, 3};
-//        Integer[] array = {};
+        Integer[] array = {};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
         completeBinaryTree.preorder();
@@ -90,7 +90,8 @@ public class IsSymmetric {
         boolean isSymmetricTree = false;
         long startMs = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            isSymmetricTree = isSymmetric.isSymmetric(completeBinaryTree.root);
+//            isSymmetricTree = isSymmetric.isSymmetric(completeBinaryTree.root);
+            isSymmetricTree = isSymmetric.isSymmetric1(completeBinaryTree.root);
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");

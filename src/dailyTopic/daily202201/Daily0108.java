@@ -1,108 +1,84 @@
 package dailyTopic.daily202201;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 1629. 按键持续时间最长的键
+ * 89. 格雷编码
  *
  * @author xinchan
- * @version 1.0.1 2022-01-06
+ * @version 1.0.1 2022-01-08
  */
 public class Daily0108 {
     /**
-     * 按键持续时间最长的键
+     * 格雷编码 - 超时、如果有通项还是可以的
      *
-     * @param releaseTimes
-     * @param keyPassed
+     * @param n
      * @return
      */
-    public char slowestKey(int[] releaseTimes, String keyPassed) {
-        int n = releaseTimes.length;
-        int[] counter = new int[26];
+    public List<Integer> grayCode(int n) {
+        List<Integer> list = new ArrayList<>();
+        int len = 1 << n - 1;
 
-        for (int i = 0; i < n; i++) {
-            int index = keyPassed.charAt(i) - 'a';
-            counter[index] = i == 0? releaseTimes[0] : Math.max(releaseTimes[i] - releaseTimes[i - 1], counter[index]);
+        list.add(0, 0);
+        list.add(1, len);
+
+        for (int i = 1; i < len; i++) {
+            int next = list.get(i - 1);
+            int pre = list.get(i);
+            int xor = i % 2 == 1? 1 : 1;
+            list.add(i, next ^ xor);
+            list.add(i + 1, pre ^ xor);
         }
 
-        int index = 0;
-        for (int i = 1; i < 26; i++) {
-            if (counter[i] >= counter[index]) {
-                index = i;
-            }
-        }
-
-        return (char)(97 + index);
+        return list;
     }
 
     /**
-     * 按键持续时间最长的键 - Map
+     * 格雷编码 - gray code 在一定程度上是镜像对称的
      *
-     * @param releaseTimes
-     * @param keyPassed
+     * @param n
      * @return
      */
-    public char slowestKey1(int[] releaseTimes, String keyPassed) {
-        int n = releaseTimes.length;
-        int[] counter = new int[26];
-        Map<Character, Integer> map = new HashMap<>();
+    public List<Integer> grayCode1(int n) {
+        List<Integer> list = new ArrayList<>();
+
+        list.add(0);
 
         for (int i = 0; i < n; i++) {
-            char c = keyPassed.charAt(i);
-            if (i == 0) {
-                map.put(c, releaseTimes[0]);
-            } else {
-                map.put(c, Math.max(releaseTimes[i] - releaseTimes[i - 1], map.getOrDefault(c, 0)));
+            int size = list.size();
+            for (int j = size - 1; j >= 0; j--) {
+                list.add(list.get(j) + size);
             }
         }
 
-        char ans = 'a';
-        for (Character c : map.keySet()) {
-            if (map.get(c) > map.getOrDefault(ans, 0) || (map.get(c).equals(map.getOrDefault(ans, 0)) && c > ans)) {
-                ans = c;
-            }
-        }
-
-        return ans;
+        return list;
     }
 
     /**
-     * 按键持续时间最长的键 - 记录 index
+     * 格雷编码 - gray code 编码方法，其实跟第一种方法类似，但是没想出来
      *
-     * @param releaseTimes
-     * @param keyPassed
+     * @param n
      * @return
      */
-    public char slowestKey2(int[] releaseTimes, String keyPassed) {
-        int n = keyPassed.length();
-        int index = 0;
-        int maxTime = releaseTimes[0];
+    public List<Integer> grayCode2(int n) {
+        List<Integer> list = new ArrayList<>();
 
-        for (int i = 1; i < n; i++) {
-            int time = releaseTimes[i] - releaseTimes[i - 1];
-            if (time > maxTime || (time == maxTime && keyPassed.charAt(i) > keyPassed.charAt(index))) {
-                index = i;
-                maxTime = time;
-            }
-        }
-
-        return keyPassed.charAt(index);
+        return list;
     }
 
     public static void main(String[] args) {
         Daily0108 daily0108 = new Daily0108();
-        int[] releaseTimes = {9,29,49,50};
-        String keyPassed = "cbcd";
-        char slowestKey = ' ';
+        int n = 3;
+        List<Integer> list = new ArrayList<>();
         long startMs = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
-//            slowestKey = daily0108.slowestKey(releaseTimes, keyPassed);  // 70 ms
-//            slowestKey = daily0108.slowestKey1(releaseTimes, keyPassed);  // 178 ms
-            slowestKey = daily0108.slowestKey2(releaseTimes, keyPassed);  // 12 ms
+        for (int i = 0; i < 1; i++) {
+//            list = daily0108.grayCode(n);
+            list = daily0108.grayCode1(n);
+//            list = daily0108.grayCode2(n);
         }
         long costMs = System.currentTimeMillis() - startMs;
         System.out.println("耗时：" + costMs + " ms");
-        System.out.println(slowestKey);
+        System.out.println(list);
     }
 }

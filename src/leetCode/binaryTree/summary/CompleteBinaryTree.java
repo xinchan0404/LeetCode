@@ -1,4 +1,6 @@
-package utils;
+package leetCode.binaryTree.summary;
+
+import utils.TreeNode;
 
 /**
  * @author xinchan
@@ -8,7 +10,7 @@ public class CompleteBinaryTree {
     /*
      * instance field
      */
-    public TreeNode root;
+    public Node root;
     public Integer[] array;
     public int length;
 
@@ -27,19 +29,19 @@ public class CompleteBinaryTree {
      *
      * @param index
      */
-    public TreeNode fullBinaryTree(TreeNode root, int index) {
+    public Node fullBinaryTree(Node root, int index) {
         if (array == null || length == 0) {
             return null;
         }
         if (root == null || index == 0) {
-            root = new TreeNode(array[0]);
+            root = new Node(array[0]);
         }
 
         /*
          * 添加左子树节点
          */
         if (2 * index + 1 < length) {
-            TreeNode left = new TreeNode(array[2 * index + 1]);
+            Node left = new Node(array[2 * index + 1]);
             root.left = left;
             fullBinaryTree(root.left, 2 * index + 1);
         }
@@ -48,7 +50,7 @@ public class CompleteBinaryTree {
          * 添加右子树节点
          */
         if (2 * index + 2 < length) {
-            TreeNode right = new TreeNode(array[2 * index + 2]);
+            Node right = new Node(array[2 * index + 2]);
             root.right = right;
             fullBinaryTree(root.right, 2 * index + 2);
         }
@@ -62,13 +64,13 @@ public class CompleteBinaryTree {
      * @param index
      * @return
      */
-    public TreeNode fullBinaryTree(int index) {
+    public Node fullBinaryTree(int index) {
         if (array == null || length == 0) {
             return null;
         }
-        TreeNode node = null;
+        Node node = null;
         if (array[index] != null) {
-            node = new TreeNode(array[index]);
+            node = new Node(array[index]);
 
             if (2 * index + 1 < length) {
                 node.left = fullBinaryTree(2 * index + 1);
@@ -85,7 +87,7 @@ public class CompleteBinaryTree {
     /*
      * Overloading
      */
-    public TreeNode fullBinaryTree() {
+    public Node fullBinaryTree() {
         return fullBinaryTree(0);
     }
 
@@ -101,35 +103,35 @@ public class CompleteBinaryTree {
         }
     }
 
-    /**
-     * 二叉树的中序遍历 - 左根右
-     */
-    public void inorder() {
-        if (root != null) {
-            root.inorder();
-            System.out.println(" null");
-        } else {
-            System.out.println("二叉树为空，无法遍历~~");
-        }
-    }
-
-    /**
-     * 二叉树的后序遍历 - 左右根
-     */
-    public void postorder() {
-        if (root != null) {
-            root.postorder();
-            System.out.println(" null");
-        } else {
-            System.out.println("二叉树为空，无法遍历~~");
-        }
-    }
+//    /**
+//     * 二叉树的中序遍历 - 左根右
+//     */
+//    public void inorder() {
+//        if (root != null) {
+//            root.inorder();
+//            System.out.println(" null");
+//        } else {
+//            System.out.println("二叉树为空，无法遍历~~");
+//        }
+//    }
+//
+//    /**
+//     * 二叉树的后序遍历 - 左右根
+//     */
+//    public void postorder() {
+//        if (root != null) {
+//            root.postorder();
+//            System.out.println(" null");
+//        } else {
+//            System.out.println("二叉树为空，无法遍历~~");
+//        }
+//    }
 
     public static void main(String[] args) {
         /*
          * 根据数组创建满二叉树
          */
-        Integer[] array = {1, 2, 3, 4, null, null, 7};
+        Integer[] array = {1, 2, 3, 4, 5, 6, 7};
         CompleteBinaryTree completeBinaryTree = new CompleteBinaryTree(array);
         completeBinaryTree.root = completeBinaryTree.fullBinaryTree();
         completeBinaryTree.preorder();
