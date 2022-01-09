@@ -4,7 +4,7 @@
 LeetCode exercise program
 
 #### 软件架构
-软件架构说明
+无
 
 
 #### 安装教程
@@ -13,7 +13,7 @@ LeetCode exercise program
 
 #### 使用说明
 
-1.  xxxx
+无
 
 #### 参与贡献
 
