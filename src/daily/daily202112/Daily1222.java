@@ -44,21 +44,21 @@ public class Daily1222 {
      * @return
      */
     public int repeatedStringMatch(String a, String b) {
-        int aLen = a.length();
-        int bLen = b.length();
-        if (aLen == bLen && a.equals(b)) {
-            return 1;
-        } else if (aLen > bLen && a.contains(b)) {
-            return 1;
-        } else {
-            String repeatedA = a.repeat(bLen / aLen + 2);
-            int repeatedALen = repeatedA.length();
-            for (int i = 0; i < repeatedALen - bLen + 1; i++) {
-                if (repeatedA.substring(i, i + bLen).equals(b)) {
-                    return bLen / aLen + 2 - ((repeatedALen - bLen - i) / aLen);
-                }
-            }
-        }
+//        int aLen = a.length();
+//        int bLen = b.length();
+//        if (aLen == bLen && a.equals(b)) {
+//            return 1;
+//        } else if (aLen > bLen && a.contains(b)) {
+//            return 1;
+//        } else {
+//            String repeatedA = a.repeat(bLen / aLen + 2);
+//            int repeatedALen = repeatedA.length();
+//            for (int i = 0; i < repeatedALen - bLen + 1; i++) {
+//                if (repeatedA.substring(i, i + bLen).equals(b)) {
+//                    return bLen / aLen + 2 - ((repeatedALen - bLen - i) / aLen);
+//                }
+//            }
+//        }
 
         return -1;
     }
