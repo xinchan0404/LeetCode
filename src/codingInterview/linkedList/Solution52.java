@@ -1,4 +1,4 @@
-package codingInterviewBook.linkedList;
+package codingInterview.linkedList;
 
 import utils.ListNode;
 

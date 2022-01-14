@@ -1,4 +1,4 @@
-package codingInterviewBook.linkedList;
+package codingInterview.linkedList;
 
 import utils.ListNode;
 
@@ -34,7 +34,6 @@ public class Solution06 {
         for (int i = 0; i < size; i++) {
             reversed[i] = stack.pop();
         }
-        System.gc();
         return reversed;
     }
 

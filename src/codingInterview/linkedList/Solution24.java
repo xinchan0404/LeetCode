@@ -1,6 +1,7 @@
-package codingInterviewBook.linkedList;
+package codingInterview.linkedList;
 
 import utils.ListNode;
+import utils.SingleLinkedList;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -12,15 +13,24 @@ import java.util.Deque;
 public class Solution24 {
     /**
      * 剑指 Offer 24. 反转链表 - 递归
+     *
      * @param head
      * @return
      */
     public ListNode reverseList(ListNode head) {
-        return null;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
     }
 
     /**
      * 剑指 Offer 24. 反转链表 - 修改指针、pre 指针、cur 指针
+     *
      * @param head
      * @return
      */
@@ -39,6 +49,7 @@ public class Solution24 {
 
     /**
      * 剑指 Offer 24. 反转链表 - 栈
+     *
      * @param head
      * @return
      */
@@ -63,5 +74,27 @@ public class Solution24 {
         cur.next = null;
 
         return newHead;
+    }
+
+    public static void main(String[] args) {
+        /*
+         * 创建单链表
+         */
+        int[] arr = {1, 2, 3, 4, 5};
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.createSingleLinkedList(arr);
+        singleLinkedList.traversal();
+
+        /*
+         * 测试 reversedList()
+         */
+        Solution24 solution24 = new Solution24();
+        long startMs = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            singleLinkedList.head = solution24.reverseList(singleLinkedList.head);
+        }
+        long costMs = System.currentTimeMillis() - startMs;
+        System.out.println("耗时：" + costMs + " ms");
+        singleLinkedList.traversal();
     }
 }

@@ -1,4 +1,4 @@
-package codingInterviewBook.linkedList;
+package codingInterview.linkedList;
 
 import utils.ListNode;
 
@@ -8,12 +8,32 @@ import utils.ListNode;
  */
 public class Solution25 {
     /**
-     * 剑指 Offer 25. 合并两个排序的链表 - 虚拟头、双指针
+     * 剑指 Offer 25. 合并两个排序的链表 - 递归
      * @param l1
      * @param l2
      * @return
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null? l2 : l1;
+        }
+
+        if (l1.val <= l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
+        }
+
+        return l1.val <= l2.val? l1 : l2;
+    }
+
+    /**
+     * 剑指 Offer 25. 合并两个排序的链表 - 虚拟头、双指针
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) {
             return l1 == null? l2 : l1;
         }

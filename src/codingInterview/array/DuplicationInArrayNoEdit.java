@@ -1,4 +1,4 @@
-package codingInterviewBook.array;
+package codingInterview.array;
 
 /**
  * @author xinchan

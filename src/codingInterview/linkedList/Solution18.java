@@ -1,4 +1,4 @@
-package codingInterviewBook.linkedList;
+package codingInterview.linkedList;
 
 import utils.ListNode;
 
@@ -71,6 +71,16 @@ public class Solution18 {
      * @return
      */
     public ListNode deleteNode2(ListNode head, int val) {
+        if (head == null) {
+            return null;
+        }
+
+        if (head.val != val) {
+            head.next = deleteNode(head.next, val);
+        } else {
+            return head.next;
+        }
+
         return head;
     }
 }
