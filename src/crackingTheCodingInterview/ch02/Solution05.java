@@ -1,6 +1,5 @@
-package crackingTheCodingInterview.ch01;
+package crackingTheCodingInterview.ch02;
 
-import com.sun.org.apache.bcel.internal.generic.LMUL;
 import utils.ListNode;
 import utils.SingleLinkedList;
 

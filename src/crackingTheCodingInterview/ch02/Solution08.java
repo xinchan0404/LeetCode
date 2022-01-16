@@ -1,4 +1,4 @@
-package crackingTheCodingInterview.ch01;
+package crackingTheCodingInterview.ch02;
 
 import utils.ListNode;
 

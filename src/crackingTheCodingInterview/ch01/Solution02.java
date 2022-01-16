@@ -1,98 +1,60 @@
 package crackingTheCodingInterview.ch01;
 
-import utils.ListNode;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author xinchan
- * @version 1.0.1 2022-01-14
+ * @version 1.0.1 2022-01-17
  */
 public class Solution02 {
     /**
-     * 面试题 02.02. 返回倒数第 k 个节点 - 快慢指针
-     * @param head
-     * @param k
+     * 面试题 01.02. 判定是否互为字符重排 - Map 记录频数
+     * @param s1
+     * @param s2
      * @return
      */
-    public int kthToLast(ListNode head, int k) {
-        if (head == null || k <= 0) {
-            return -1;
+    public boolean CheckPermutation2(String s1, String s2) {
+        int n1 = s1.length();
+        int n2 = s2.length();
+        if (n1 != n2) {
+            return false;
         }
-        ListNode fast = head;
-        for (int i = 0; i < k; i++) {
-            if (fast != null) {
-                fast = fast.next;
-            } else {
-                return -1;
+
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < n1; i++) {
+            char c = s1.charAt(i);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        for (int i = 0; i < n2; i++) {
+            char c = s2.charAt(i);
+            map.put(c, map.getOrDefault(c, 0) - 1);
+        }
+
+        Set<Character> set = map.keySet();
+        for (char c : set) {
+            if (map.get(c) != 0) {
+                return false;
             }
         }
-
-        ListNode slow = head;
-        while (fast != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-
-        return slow.val;
+        return true;
     }
 
 
-    private int cnt;
-    private int ans = -1;
     /**
-     * 面试题 02.02. 返回倒数第 k 个节点 - 递归
-     * @param head
-     * @param k
+     * 面试题 01.02. 判定是否互为字符重排 - 字符数组排序
+     * @param s1
+     * @param s2
      * @return
      */
-    public int kthToLast2(ListNode head, int k) {
-        kthToLastRecur(head, k);
-
-        return ans;
-    }
-
-    /**
-     * 递归方法
-     * @param head
-     * @param k
-     */
-    private void kthToLastRecur(ListNode head, int k) {
-        if (head == null) {
-            return;
-        }
-
-        kthToLastRecur(head.next, k);
-        if (cnt + 1 == k) {
-            ans = head.val;
-        }
-        cnt++;
-    }
-
-
-    /**
-     * 面试题 02.02. 返回倒数第 k 个节点 - 顺序查找
-     * @param head
-     * @param k
-     * @return
-     */
-    public int kthToLast1(ListNode head, int k) {
-        if (head == null) {
-            return -1;
-        }
-        int n = 0;
-        ListNode cur = head;
-        while (cur != null) {
-            n++;
-            cur = cur.next;
-        }
-        if (k <= 0 || k > n) {
-            return -1;
-        }
-
-        cur = head;
-        for (int i = 0; i < n - k; i++) {
-            cur = cur.next;
-        }
-
-        return cur.val;
+    public boolean CheckPermutation1(String s1, String s2) {
+        char[] chars1 = s1.toCharArray();
+        char[] chars2 = s2.toCharArray();
+        Arrays.sort(chars1);
+        Arrays.sort(chars2);
+        return Arrays.equals(chars1, chars2);
     }
 }

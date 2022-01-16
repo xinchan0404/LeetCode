@@ -1,62 +1,58 @@
 package crackingTheCodingInterview.ch01;
 
-import utils.ListNode;
-
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * @author xinchan
- * @version 1.0.1 2022-01-14
+ * @version 1.0.1 2022-01-16
  */
 public class Solution01 {
     /**
-     * 面试题 02.01. 移除重复节点 - 双重循环、时间换空间
-     * @param head
+     * 面试题 01.01. 判定字符是否唯一 - 位运算
+     * @param astr
      * @return
      */
-    public ListNode removeDuplicateNodes(ListNode head) {
-        if (head == null) {
-            return null;
-        }
+    public boolean isUnique(String astr) {
+        int bits = 0;
 
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode cur1 = cur;
-            while (cur1.next != null) {
-                if (cur1.next.val == cur.val) {
-                    cur1.next = cur1.next.next;
-                } else {
-                    cur1 = cur1.next;
-                }
-            }
-            cur = cur.next;
-        }
-
-        return head;
+        return true;
     }
 
 
     /**
-     * 面试题 02.01. 移除重复节点 - HashSet、pre 指针
-     * @param head
+     * 面试题 01.01. 判定字符是否唯一 - 数组模拟
+     * @param astr
      * @return
      */
-    public ListNode removeDuplicateNodes1(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        Set<Integer> set = new HashSet<>();
-        set.add(head.val);
-        ListNode cur = head;
-        while (cur.next != null) {
-            if (set.add(cur.next.val)) {
-                cur = cur.next;
+    public boolean isUnique2(String astr) {
+        int n = astr.length();
+        boolean[] counter = new boolean[26];
+        for (int i = 0; i < n; i++) {
+            int index = astr.charAt(i) - 'a';
+            if (!counter[index]) {
+                counter[index] = true;
             } else {
-                cur.next = cur.next.next;
+                return false;
             }
         }
+        return false;
+    }
 
-        return head;
+
+    /**
+     * 面试题 01.01. 判定字符是否唯一 - Set
+     * @param astr
+     * @return
+     */
+    public boolean isUnique1(String astr) {
+        int n = astr.length();
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (!set.add(astr.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }

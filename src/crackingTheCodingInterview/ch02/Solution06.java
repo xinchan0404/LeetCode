@@ -1,4 +1,4 @@
-package crackingTheCodingInterview.ch01;
+package crackingTheCodingInterview.ch02;
 
 import utils.ListNode;
 
@@ -40,11 +40,13 @@ public class Solution06 {
             cur = post;
         }
 
+        boolean flag = true;
         ListNode left = head;
         ListNode right = pre;
         for (int i = 0; i < n / 2; i++) {
             if (left.val != right.val) {
-                return false;
+                flag = false;
+                break;
             }
             left = left.next;
             right = right.next;
@@ -62,7 +64,7 @@ public class Solution06 {
             cur = post;
         }
 
-        return true;
+        return flag;
     }
 
 
