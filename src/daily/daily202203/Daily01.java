@@ -4,7 +4,7 @@ package daily.daily202203;
  * @author xinchan
  * @version 1.0.1 2022-03-01
  */
-public class Solution6 {
+public class Daily01 {
     /**
      * Z 字形变换
      * @param s
