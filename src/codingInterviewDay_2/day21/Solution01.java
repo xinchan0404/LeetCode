@@ -6,17 +6,18 @@ package codingInterviewDay_2.day21;
  */
 public class Solution01 {
     /**
-     * 剑指 Offer 15. 二进制中1的个数 = 位运算
+     * 剑指 Offer 15. 二进制中1的个数 - 位运算
      * @param n
      * @return
      */
     public int hammingWeight(int n) {
         int cnt = 0;
+        int bit = 1;
         for (int i = 0; i < 32; i++) {
-            int num = (int) Math.pow(2, i);
-            if ((n & num )== num) {
+            if ((n & bit) != 0) {
                 cnt++;
             }
+            bit <<= 1;
         }
         return cnt;
     }
