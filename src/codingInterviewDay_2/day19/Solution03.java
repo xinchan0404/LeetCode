@@ -11,6 +11,23 @@ public class Solution03 {
      * @return
      */
     public boolean verifyPostorder(int[] postorder) {
-        return false;
+        int n = postorder.length;
+        return verifyPostorderRecur(postorder, 0, n - 1);
+    }
+
+    private boolean verifyPostorderRecur(int[] postorder, int left, int right) {
+        if (left >= right) {
+            return true;
+        }
+        int root = postorder[right];
+        int leftPos = left;  // 左子树的右边界 - 1
+        while (postorder[leftPos] < root) {
+            leftPos++;
+        }
+        int rightPos = leftPos; // 右子树的左边界
+        while (postorder[rightPos] > root) {
+            rightPos++;
+        }
+        return rightPos == right && verifyPostorderRecur(postorder, left, leftPos - 1) && verifyPostorderRecur(postorder, rightPos, right - 1);
     }
 }
