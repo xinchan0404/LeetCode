@@ -1,59 +1,61 @@
-package codingInterviewDay_2.day07;
+package codingInterview2Day.dayxx.trie02;
 
 /**
  * @author xinchan
  * @version 1.0.1 2022-03-07
  */
 class Trie {
-    private Trie[] tries;
-    private boolean isEnd;
+    class TreeNode {
+        private TreeNode[] dictTree;
+        private boolean isEnd;
+        public TreeNode() {
+            dictTree = new TreeNode[26];
+        }
+    }
+
+    private TreeNode root;
 
     /** Initialize your data structure here. */
     public Trie() {
-        tries = new Trie[26];
-        isEnd = false;
+        root = new TreeNode();
     }
 
     /** Inserts a word into the trie. */
     public void insert(String word) {
-        Trie node = this;
+        TreeNode cur = root;
         int n = word.length();
         for (int i = 0; i < n; i++) {
             int index = word.charAt(i) - 'a';
-            if (node.tries[index] == null) {
-                node.tries[index] = new Trie();
+            if (cur.dictTree[index] == null) {
+                cur.dictTree[index] = new TreeNode();
             }
-            node = node.tries[index];
+            cur = cur.dictTree[index];
         }
-        node.isEnd = true;
+        cur.isEnd = true;
     }
 
     /** Returns if the word is in the trie. */
     public boolean search(String word) {
-        Trie node = this;
-        int n = word.length();
-        for (int i = 0; i < n; i++) {
-            int index = word.charAt(i) - 'a';
-            if (node.tries[index] == null) {
-                return false;
-            }
-            node = node.tries[index];
-        }
-        return node.isEnd;
+        TreeNode node = startsWithPrefix(word);
+        return node != null && node.isEnd;
     }
 
     /** Returns if there is any word in the trie that starts with the given prefix. */
     public boolean startsWith(String prefix) {
-        Trie node = this;
+        return startsWithPrefix(prefix) != null;
+    }
+
+    private TreeNode startsWithPrefix(String prefix) {
+        TreeNode cur = root;
         int n = prefix.length();
         for (int i = 0; i < n; i++) {
             int index = prefix.charAt(i) - 'a';
-            if (node.tries[index] == null) {
-                return false;
+            if (cur.dictTree[index] == null) {
+                return null;
             }
-            node = node.tries[index];
+            cur = cur.dictTree[index];
         }
-        return true;
+        return cur;
     }
 }
 
