@@ -7,7 +7,7 @@ import java.util.List;
  * @author xinchan
  * @version 1.0.1 2022-03-08
  */
-public class Day08 {
+public class Daily08 {
     /**
      * 2055. 蜡烛之间的盘子
      * @param s
