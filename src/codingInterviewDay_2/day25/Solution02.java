@@ -1,7 +1,6 @@
 package codingInterviewDay_2.day25;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 /**
  * @author xinchan
@@ -10,6 +9,7 @@ import java.util.Deque;
 public class Solution02 {
     /**
      * 剑指 Offer 31. 栈的压入、弹出序列
+     *
      * @param pushed
      * @param popped
      * @return
@@ -48,6 +48,7 @@ public class Solution02 {
 
     /**
      * 剑指 Offer 31. 栈的压入、弹出序列
+     *
      * @param pushed
      * @param popped
      * @return

@@ -37,4 +37,46 @@ public class Solution01 {
         }
         return ans;
     }
+
+    /**
+     * 剑指 Offer 29. 顺时针打印矩阵 - 按层模拟
+     * @param matrix
+     * @return
+     */
+    public int[] spiralOrder1(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int total = m * n;
+        int[] ans = new int[total];
+        int left = 0;
+        int right = n - 1;
+        int top = 0;
+        int bottom = m - 1;
+        int index = 0;
+        while (index < total) {
+            for (int i = left; i <= right; i++) {
+                ans[index++] = matrix[top][i];
+            }
+            for (int i = top + 1; i <= bottom; i++) {
+                ans[index++] = matrix[i][right];
+            }
+            if (left < right && top < bottom) {
+                for (int i = right - 1; i >= left; i--) {
+                    ans[index++] = matrix[bottom][i];
+                }
+                for (int i = bottom - 1; i >= top - 1; i--) {
+                    ans[index++] = matrix[i][left];
+                }
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+
+        return ans;
+    }
 }
