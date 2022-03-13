@@ -8,45 +8,40 @@ import java.util.Deque;
  * @version 1.0.1 2022-03-12
  */
 public class MaxQueue {
-    private Deque<Integer> queue;
-    private Deque<Integer> stack;
     /**
-     * 剑指 Offer 59 - II. 队列的最大值
+     * 剑指 Offer 59 - II. 队列的最大值 - 单调队列
      */
+    private Deque<Integer> deque;
+    private Deque<Integer> maxVal;
+
     public MaxQueue() {
-        this.queue = new ArrayDeque<>();
-        this.stack = new ArrayDeque<>();
+        this.deque = new ArrayDeque<>();
+        this.maxVal = new ArrayDeque<>();
     }
 
     public int max_value() {
-        return stack.isEmpty() ? -1 : stack.peek();
+        return maxVal.isEmpty() ? -1 : maxVal.peek();
     }
 
     public void push_back(int value) {
-        queue.add(value);
-        if (stack.isEmpty()) {
-            stack.push(value);
-        } else {
-            stack.push(Math.max(value, stack.peek()));
+        deque.offer(value);
+        while (!maxVal.isEmpty() && maxVal.peekLast() < value) {
+            maxVal.pollLast();
         }
+        maxVal.offer(value);
     }
 
     public int pop_front() {
-        int popVal = -1;
-        if (!queue.isEmpty()) {
-            popVal = queue.remove();
+        if (deque.isEmpty()) {
+            return -1;
         }
-        if (!stack.isEmpty() && popVal == stack.peek()) {
-            stack.pop();
-        }
-        return popVal;
-    }
 
-    public static void main(String[] args) {
-        MaxQueue maxQueue = new MaxQueue();
-        maxQueue.push_back(1);
-        maxQueue.push_back(2);
-        int maxVal = maxQueue.max_value();
-        System.out.println(maxVal);
+        int popVal = deque.poll();
+
+        if (!maxVal.isEmpty() && maxVal.peek() == popVal) {
+            maxVal.poll();
+        }
+
+        return popVal;
     }
 }
