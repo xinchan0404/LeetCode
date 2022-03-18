@@ -22,6 +22,7 @@ public class Solution03 {
             }
             if (left == -1) {
                 stringBuilder.append(s, 0, right + 1);
+                break;
             } else {
                 stringBuilder.append(s, left + 1, right + 1).append(" ");
             }

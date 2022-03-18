@@ -22,10 +22,9 @@ public class Solution01 {
         for (int i = 2; i < n; i++) {
             int j = Integer.parseInt(s.substring(i - 1, i + 1));
             if (j <= 25 && j >= 10) {
-                sum = first + second;
-            } else {
-                sum = second;
+                sum += first;
             }
+            sum += second;
             first = second;
             second = sum;
         }

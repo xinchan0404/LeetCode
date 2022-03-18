@@ -20,17 +20,8 @@ public class Solution02 {
         ListNode tmp1 = headA;
         ListNode tmp2 = headB;
         while (tmp1 != tmp2) {
-            tmp1 = tmp1.next;
-            tmp2 = tmp2.next;
-            if (tmp1 == null && tmp2 == null) {
-                break;
-            }
-            if (tmp1 == null) {
-                tmp1 = headB;
-            }
-            if (tmp2 == null) {
-                tmp2 = headA;
-            }
+            tmp1 = tmp1 == null ? headB : tmp1.next;
+            tmp2 = tmp2 == null ? headA : tmp2.next;
         }
         return tmp1;
     }
@@ -45,41 +36,26 @@ public class Solution02 {
         if (headA == null || headB == null) {
             return null;
         }
-
         int diff = 0;
         ListNode tmp = headA;
         while (tmp != null) {
-            tmp = tmp.next;
             diff++;
+            tmp = tmp.next;
         }
         tmp = headB;
         while (tmp != null) {
-            tmp = tmp.next;
             diff--;
+            tmp = tmp.next;
         }
-
-        ListNode tmp1 = null;
-        if (diff > 0) {
-            tmp = headA;
-            tmp1 = headB;
-            while (diff > 0) {
-                tmp = tmp.next;
-                diff--;
-            }
-        } else if (diff < 0) {
-            tmp = headB;
-            tmp1 = headA;
-            while (diff < 0) {
-                tmp = tmp.next;
-                diff++;
-            }
+        tmp = diff > 0 ? headA : headB;
+        for (int i = 0; i < Math.abs(diff); i++) {
+            tmp = tmp.next;
         }
-
+        ListNode tmp1 = diff > 0 ? headB : headA;
         while (tmp != tmp1) {
             tmp = tmp.next;
             tmp1 = tmp1.next;
         }
-
         return tmp;
     }
 }

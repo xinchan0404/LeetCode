@@ -14,19 +14,23 @@ public class Solution01 {
      * @return
      */
     public boolean isSubStructure(TreeNode A, TreeNode B) {
-        if (A == null || B == null) {
+        if (B == null || A == null) {
             return false;
         }
-        return isSubStructure(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B);
-    }
-
-    private boolean isSubStructureRecur(TreeNode root1, TreeNode root2) {
-        if (root2 == null) {
+        if (isSubStructureRecur(A, B)) {
             return true;
         }
-        if (root1 == null || root1.val != root2.val) {
+
+        return isSubStructure(A.left, B) || isSubStructureRecur(A.right, B);
+    }
+
+    public boolean isSubStructureRecur(TreeNode A, TreeNode B) {
+        if (B == null) {
             return false;
         }
-        return isSubStructureRecur(root1.left, root2.left) && isSubStructureRecur(root1.right, root2.right);
+        if (A == null || A.val != B.val) {
+            return false;
+        }
+        return isSubStructureRecur(A.left, B.left) && isSubStructureRecur(A.right, B.right);
     }
 }

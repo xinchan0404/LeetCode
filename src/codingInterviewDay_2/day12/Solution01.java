@@ -8,35 +8,45 @@ import utils.ListNode;
  */
 public class Solution01 {
     /**
-     * 剑指 Offer 25. 合并两个排序的链表
+     * 剑指 Offer 25. 合并两个排序的链表 - 双指针
      * @param l1
      * @param l2
      * @return
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(-1);
+        ListNode tmp = head;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                tmp.next = l1;
+                l1 = l1.next;
+            } else {
+                tmp.next = l2;
+                l2 = l2.next;
+            }
+            tmp = tmp.next;
+        }
+        tmp.next = l1 == null ? l2 : l1;
+        return head.next;
+    }
+
+    /**
+     * 剑指 Offer 25. 合并两个排序的链表 - 递归
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) {
             return l1 == null ? l2 : l1;
         }
-        ListNode merge = new ListNode(-1);
-        ListNode cur = merge;
-        ListNode tmp1 = l1;
-        ListNode tmp2 = l2;
-        while (tmp1 != null || tmp2 != null) {
-            if (tmp1 == null) {
-                cur.next = tmp2;
-                break;
-            } else if (tmp2 == null) {
-                cur.next = tmp1;
-                break;
-            } else if (tmp1.val < tmp2.val) {
-                cur.next = tmp1;
-                tmp1 = tmp1.next;
-            } else {
-                cur.next = tmp2;
-                tmp2 = tmp2.next;
-            }
-            cur = cur.next;
+
+        if (l1.val <= l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
         }
-        return merge.next;
+
+        return l1.val <= l2.val ? l1 : l2;
     }
 }

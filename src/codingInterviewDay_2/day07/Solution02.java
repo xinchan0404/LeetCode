@@ -42,7 +42,7 @@ public class Solution02 {
     }
 
     /**
-     * 剑指 Offer 27. 二叉树的镜像 - BFS, preorder
+     * 剑指 Offer 27. 二叉树的镜像 - BFS
      * @param root
      * @return
      */
@@ -61,7 +61,7 @@ public class Solution02 {
     }
 
     /**
-     * 剑指 Offer 27. 二叉树的镜像 - BFS, postorder
+     * 剑指 Offer 27. 二叉树的镜像 - BFS
      * @param root
      * @return
      */

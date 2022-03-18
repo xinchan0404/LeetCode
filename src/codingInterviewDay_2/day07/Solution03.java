@@ -2,6 +2,10 @@ package codingInterviewDay_2.day07;
 
 import utils.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 /**
  * @author xinchan
  * @version 1.0.1 2022-03-07
@@ -20,10 +24,9 @@ public class Solution03 {
         if (root1 == null && root2 == null) {
             return true;
         }
-        if ((root1 == null || root2 == null) || root1.val != root2.val){
+        if (root1 == null || root2 == null) {
             return false;
         }
-
-        return isSymmetricRecur(root1.left, root2.right) && isSymmetricRecur(root1.right, root2.left);
+        return root1.val == root2.val && isSymmetricRecur(root1.left, root2.right) && isSymmetricRecur(root1.right, root2.left);
     }
 }

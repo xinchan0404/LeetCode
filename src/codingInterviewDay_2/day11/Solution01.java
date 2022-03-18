@@ -10,26 +10,42 @@ import utils.SingleLinkedList;
  */
 public class Solution01 {
     /**
-     * 剑指 Offer 18. 删除链表的节点 - 前置指针
+     * 剑指 Offer 18. 删除链表的节点 - 预判断
      *
      * @param head
      * @param val
      * @return
      */
     public ListNode deleteNode(ListNode head, int val) {
+        if (head.val == val) {
+            return head.next;
+        }
+        ListNode cur = head;
+        while (cur.next != null) {
+            if (cur.next.val == val) {
+                cur.next = cur.next.next;
+                break;
+            }
+            cur = cur.next;
+        }
+        return head;
+    }
+
+    /**
+     * 剑指 Offer 18. 删除链表的节点 - 递归
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode deleteNode1(ListNode head, int val) {
         if (head == null) {
             return null;
         }
         if (head.val == val) {
             return head.next;
         }
-        ListNode tmp = head;
-        while (tmp.next != null && tmp.next.val != val) {
-            tmp = tmp.next;
-        }
-        if (tmp.next != null) {
-            tmp.next = tmp.next.next;
-        }
+        head.next = deleteNode1(head.next, val);
         return head;
     }
 }

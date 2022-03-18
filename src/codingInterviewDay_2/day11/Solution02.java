@@ -14,21 +14,43 @@ public class Solution02 {
      * @return
      */
     public ListNode getKthFromEnd(ListNode head, int k) {
-        if (k <= 0) {
+        if (head == null) {
             return null;
         }
         ListNode fast = head;
-        for (int i = 0; i < k && fast != null; i++) {
+        ListNode slow = head;
+        for (int i = 0; i < k; i++) {
             fast = fast.next;
         }
-        if (fast == null) {
-            return head;
-        }
-        ListNode slow = head;
         while (fast != null) {
             fast = fast.next;
             slow = slow.next;
         }
         return slow;
+    }
+
+    private int cnt;
+    private int k;
+    private ListNode newHead;
+    /**
+     * 剑指 Offer 22. 链表中倒数第k个节点 - 递归
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode getKthFromEnd1(ListNode head, int k) {
+        this.k = k;
+        recur(head);
+        return newHead;
+    }
+
+    private void recur(ListNode head) {
+        if (head == null) {
+            return;
+        }
+        recur(head.next);
+        if (++cnt == k) {
+            newHead = head;
+        }
     }
 }

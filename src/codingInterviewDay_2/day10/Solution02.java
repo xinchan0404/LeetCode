@@ -1,12 +1,15 @@
 package codingInterviewDay_2.day10;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author xinchan
  * @version 1.0.1 2022-03-02
  */
 public class Solution02 {
     /**
-     * 剑指 Offer 48. 最长不含重复字符的子字符串 - 动态规划、遍历
+     * 剑指 Offer 48. 最长不含重复字符的子字符串 - 动态规划、线性遍历
      * @param s
      * @return
      */
@@ -22,16 +25,30 @@ public class Solution02 {
             while (j >= 0 && s.charAt(i) != s.charAt(j)) {
                 j--;
             }
-            len = len < i - j ? len + 1 : i - j;
+            len = i - j;
             ans = Math.max(ans, len);
         }
         return ans;
     }
 
-    public static void main(String[] args) {
-        Solution02 solution02 = new Solution02();
-        String s = "abcsasasdaefaea";
-        int i = solution02.lengthOfLongestSubstring(s);
-        System.out.println(i);
+    /**
+     * 剑指 Offer 48. 最长不含重复字符的子字符串 - 动态规划、双指针
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring1(String s) {
+        int n = s.length();
+        Map<Character, Integer> map = new HashMap<>();
+        int j = -1;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            if (map.containsKey(c)) {
+                j = Math.max(j, map.get(c));
+            }
+            map.put(c, i);
+            ans = Math.max(ans, i - j);
+        }
+        return ans;
     }
 }
