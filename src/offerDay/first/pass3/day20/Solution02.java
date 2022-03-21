@@ -7,6 +7,14 @@ package offerDay.first.pass3.day20;
  */
 public class Solution02 {
     public double myPow(double x, int n) {
-        return 0;
+        return n > 0 ? fastPower(x, n) : 1.0 / fastPower(x, -n);
+    }
+
+    private double fastPower(double x, int N) {
+        if (N == 0) {
+            return 1.0;
+        }
+        double y = fastPower(x, N / 2);
+        return N % 2 == 0 ? y * y : y * y * x;
     }
 }
