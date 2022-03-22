@@ -7,6 +7,6 @@ package weeks.double74;
  */
 public class Solution02 {
     public long maximumSubsequenceCount(String text, String pattern) {
-
+        return 0;
     }
 }
