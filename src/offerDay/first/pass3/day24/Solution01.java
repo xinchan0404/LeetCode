@@ -7,6 +7,6 @@ package offerDay.first.pass3.day24;
  */
 public class Solution01 {
     public int cuttingRope(int n) {
-
+        return 0;
     }
 }
