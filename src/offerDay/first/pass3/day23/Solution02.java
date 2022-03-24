@@ -1,5 +1,8 @@
 package offerDay.first.pass3.day23;
 
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 剑指 Offer 66. 构建乘积数组
  * @author xinchan
