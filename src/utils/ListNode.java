@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
@@ -11,6 +12,7 @@ public class ListNode {
      * instance field
      */
     public int val;
+    public int vall;
     public ListNode next;
 
     /*

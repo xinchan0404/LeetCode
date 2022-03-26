@@ -36,7 +36,12 @@ class Solution03_ {
             fast = fast.next.next;
             slow = slow.next;
             if (fast == slow) {
-                break;
+                slow = head;
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+                return fast;
             }
         }
         return null;
