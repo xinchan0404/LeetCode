@@ -1,4 +1,4 @@
-package tencent.top10;
+package tencent.top10.pass1;
 
 import java.util.ArrayList;
 import java.util.List;

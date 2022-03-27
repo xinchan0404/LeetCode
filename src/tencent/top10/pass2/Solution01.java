@@ -1,53 +1,24 @@
-package tencent.top10;
+package tencent.top10.pass2;
 
 import utils.ListNode;
 
-import java.awt.datatransfer.FlavorListener;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 /**
- * 剑指 Offer II 026. 重排链表
+ * 重排链表
  * @author xinchan
- * @version 1.0.1 2022-03-25
+ * @version 1.0.1 2022-03-27
  */
 public class Solution01 {
     public void reorderList(ListNode head) {
-        Deque<ListNode> deque = new ArrayDeque<>();
-        ListNode tmp = head;
-        while (tmp != null) {
-            deque.offer(tmp);
-            tmp = tmp.next;
-        }
-        ListNode cur = null;
-        ListNode tail = null;
-        while (!deque.isEmpty()) {
-            if (tail != null) {
-                tail.next = deque.peekFirst();
-            }
-            cur = deque.pollFirst();
-            tail= deque.pollLast();
-            if (!deque.isEmpty()) {
-                deque.peekLast().next = null;
-            }
-            cur.next = tail;
-        }
-    }
-}
-
-class Solution01_ {
-    public void reorderList(ListNode head) {
-        if (head == null) {
-            return;
-        }
         List<ListNode> list = new ArrayList<>();
         ListNode tmp = head;
         while (tmp != null) {
             list.add(tmp);
             tmp = tmp.next;
         }
+
         int left = 0;
         int right = list.size() - 1;
         while (left < right) {
@@ -63,21 +34,17 @@ class Solution01_ {
     }
 }
 
-class Solution01__ {
+class Solution01_ {
     public void reorderList(ListNode head) {
-        if (head == null) {
-            return;
-        }
-        ListNode midNode = getMidNode(head);
-        midNode.next = null;
-        ListNode tail = reverseList(midNode);
+        ListNode middleNode = getMiddleNode(head);
+        ListNode tail = reverseList(middleNode);
         mergeList(head, tail);
     }
 
-    private ListNode getMidNode(ListNode head) {
+    private ListNode getMiddleNode(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
-        while (fast.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
@@ -85,8 +52,8 @@ class Solution01__ {
     }
 
     private ListNode reverseList(ListNode head) {
-        ListNode pre = null;
         ListNode cur = head;
+        ListNode pre = null;
         while (cur != null) {
             ListNode post = cur.next;
             cur.next = pre;
@@ -104,6 +71,10 @@ class Solution01__ {
             tmp2 = l2.next;
             l1.next = l2;
             l1 = tmp1;
+            if (l1 == l2) {
+                l2.next = null;
+                break;
+            }
             l2.next = l1;
             l2 = tmp2;
         }
