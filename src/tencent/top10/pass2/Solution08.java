@@ -15,7 +15,7 @@ public class Solution08 {
         if (lists == null || lists.length == 0) {
             return null;
         }
-        PriorityQueue<ListNode> priorityQueue = new PriorityQueue<>();
+        PriorityQueue<ListNode> priorityQueue = new PriorityQueue<>((a, b) -> a.val - b.val);
         for (ListNode list : lists) {
             if (list != null) {
                 priorityQueue.offer(list);
@@ -25,7 +25,13 @@ public class Solution08 {
         ListNode head = new ListNode(-1);
         ListNode tail = head;
         while (!priorityQueue.isEmpty()) {
-
+            ListNode node = priorityQueue.poll();
+            tail.next = node;
+            if (node.next != null) {
+                priorityQueue.offer(node.next);
+            }
+            tail = tail.next;
         }
+        return head.next;
     }
 }
