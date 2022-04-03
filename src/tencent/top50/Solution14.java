@@ -7,6 +7,6 @@ package tencent.top50;
  */
 public class Solution14 {
     public String longestCommonPrefix(String[] strs) {
-
+        return null;
     }
 }
