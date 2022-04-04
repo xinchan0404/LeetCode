@@ -34,22 +34,24 @@ class Solution577_ {
             while (right < n && chars[right] != ' ') {
                 right++;
             }
-            int l = left;
-            int r = right;
-            while (l <= r) {
-                swap(chars, l, r);
-                l++;
-                r--;
-            }
+            reverseString(chars, left, right - 1);
             right++;
             left = right;
         }
         return new String(chars);
     }
 
-    private void swap(char[] arr, int left, int right) {
-        char tmp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = tmp;
+    private void reverseString(char[] chars, int left, int right) {
+        while (left <= right) {
+            swap(chars, left, right);
+            left++;
+            right--;
+        }
+    }
+
+    private void swap(char[] chars, int left, int right) {
+        char tmp = chars[left];
+        chars[left] = chars[right];
+        chars[right] = tmp;
     }
 }
