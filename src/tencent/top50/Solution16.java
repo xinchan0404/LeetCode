@@ -8,32 +8,39 @@ import java.util.List;
  * @version 1.0.1 2022-04-17
  */
 public class Solution16 {
-    private int target;
-    private int diff=Integer.MAX_VALUE;
+    private int diff = Integer.MAX_VALUE;
 
     public int threeSumClosest(int[] nums, int target) {
-        this.target = target;
         Arrays.sort(nums);
-        int left = 0;
-        int right = nums.length - 1;
-        while (left < right - 1) {
-            twoSum(nums, left, right);
-            if(diff==0)break;
-            left++;
+        int n = nums.length;
+        for (int i = 0; i < n - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            twoSum(nums, i, n - 1, target);
+            if (diff == 0) {
+                break;
+            }
         }
-        return -diff + target;
+        return target - diff;
     }
 
-    private void twoSum(int[] nums, int left, int right) {
+    private void twoSum(int[] nums, int left, int right, int target) {
         int val = nums[left++];
         while (left < right) {
             int tmp = target - (val + nums[left] + nums[right]);
-            if(Math.abs(tmp)<Math.abs(diff))  diff=tmp;
             if (tmp < 0) {
+                if (-tmp < Math.abs(diff)) {
+                    diff = tmp;
+                }
                 right--;
             } else if (tmp > 0) {
+                if (tmp < Math.abs(diff)) {
+                    diff = tmp;
+                }
                 left++;
             } else {
+                diff = tmp;
                 return;
             }
         }
