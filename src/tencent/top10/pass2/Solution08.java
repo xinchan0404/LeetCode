@@ -3,7 +3,6 @@ package tencent.top10.pass2;
 import utils.ListNode;
 
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * 23. 合并K个升序链表
