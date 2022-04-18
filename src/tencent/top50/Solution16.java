@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Solution16 {
     private int target;
-    private int diff=Integer.MAX_VALUE;
+    private int diff = Integer.MAX_VALUE;
 
     public int threeSumClosest(int[] nums, int target) {
         this.target = target;
@@ -18,7 +18,7 @@ public class Solution16 {
         int right = nums.length - 1;
         while (left < right - 1) {
             twoSum(nums, left, right);
-            if(diff==0)break;
+            if (diff == 0) break;
             left++;
         }
         return -diff + target;
@@ -28,7 +28,9 @@ public class Solution16 {
         int val = nums[left++];
         while (left < right) {
             int tmp = target - (val + nums[left] + nums[right]);
-            if(Math.abs(tmp)<Math.abs(diff))  diff=tmp;
+            if (Math.abs(tmp) < Math.abs(diff)) {
+                diff = tmp;
+            }
             if (tmp < 0) {
                 right--;
             } else if (tmp > 0) {
