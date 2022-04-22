@@ -7,7 +7,19 @@ package daily.daily202204;
  */
 public class Solution22 {
     public int maxRotateFunction(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        return 0;
+        int ans;
+        int n = nums.length;
+        int sum = 0;
+        int cur = 0;
+        for (int i = 0; i < n; i++) {
+            cur += i * nums[i];
+            sum += nums[i];
+        }
+        ans = cur;
+        for (int i = 1; i < n; i++) {
+            cur = cur + sum - n * nums[n - i];
+            ans = Math.max(ans, cur);
+        }
+        return ans;
     }
 }
