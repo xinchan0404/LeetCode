@@ -18,21 +18,23 @@ public class Solution78 {
         int n = nums.length;
         for (int i = 0; i <= n; i++) {
             boolean[] used = new boolean[n];
-            recall(nums, used, i);
+            int idx = 0;
+            recall(nums, used, i, idx);
         }
         return lists;
     }
 
-    private void recall(int[] nums, boolean[] used, int k) {
+    private void recall(int[] nums, boolean[] used, int k, int idx) {
         if (list.size() == k) {
             lists.add(new ArrayList<>(list));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (!used[i]) {
+            if (!used[i] && i >= idx) {
+                idx = i + 1;
                 used[i] = true;
                 list.add(nums[i]);
-                recall(nums, used, k);
+                recall(nums, used, k, idx);
                 used[i] = false;
                 list.remove((Integer) nums[i]);
             }
@@ -44,5 +46,26 @@ public class Solution78 {
         int[] nums = {1,2,3};
         List<List<Integer>> subsets = solution78.subsets(nums);
         System.out.println(subsets);
+    }
+}
+
+class Solution78_ {
+    private List<List<Integer>> lists = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
+
+    public List<List<Integer>> subsets(int[] nums) {
+        dfs(nums, 0);
+        return lists;
+    }
+
+    private void dfs(int[] nums, int cur) {
+        if (cur == nums.length) {
+            lists.add(new ArrayList<>(list));
+            return;
+        }
+        list.add(nums[cur]);
+        dfs(nums, cur + 1);
+        list.remove(list.size() - 1);
+        dfs(nums, cur + 1);
     }
 }
