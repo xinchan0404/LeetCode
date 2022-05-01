@@ -8,7 +8,7 @@ import java.util.Deque;
  * @author xinchan
  * @version 1.0.1 2022-04-29
  */
-public class Day01 {
+public class Solution01 {
     class CQueue {
         private Deque<Integer> input;
         private Deque<Integer> output;

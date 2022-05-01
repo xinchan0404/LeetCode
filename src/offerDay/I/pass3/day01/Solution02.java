@@ -8,7 +8,7 @@ import java.util.Deque;
  * @author xinchan
  * @version 1.0.1 2022-04-29
  */
-public class Day02 {
+public class Solution02 {
     class MinStack {
         private Deque<Integer> stack;
         private Deque<Integer> min;

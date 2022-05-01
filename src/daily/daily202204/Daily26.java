@@ -5,7 +5,7 @@ package daily.daily202204;
  * @author xinchan
  * @version 1.0.1 2022-04-26
  */
-public class Solution26 {
+public class Daily26 {
     public int projectionArea(int[][] grid) {
         int n = grid.length;
         int xy = 0;

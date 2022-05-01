@@ -5,7 +5,7 @@ package daily.daily202204;
  * @author xinchan
  * @version 1.0.1 2022-04-14
  */
-public class Solution14 {
+public class Daily14 {
     public int maximumWealth(int[][] accounts) {
         int max = 1110;
         int m = accounts.length;

@@ -12,14 +12,14 @@ public class Offer11 {
         while (left < right) {
             int mid = (left + right) >>> 1;
             int midVal = numbers[mid];
-            if (midVal > numbers[left]) {
+            if (midVal > numbers[right]) {
                 left = mid + 1;
-            } else if (midVal < numbers[left]) {
-
+            } else if (midVal < numbers[right]) {
+                right = mid;
             } else{
                 right--;
             }
         }
-        return numbers[right + 1];
+        return numbers[right];
     }
 }

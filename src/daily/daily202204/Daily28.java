@@ -5,7 +5,7 @@ package daily.daily202204;
  * @author xinchan
  * @version 1.0.1 2022-04-28
  */
-public class Solution28 {
+public class Daily28 {
     public int[] sortArrayByParity(int[] nums) {
         int left = 0;
         int right = nums.length - 1;

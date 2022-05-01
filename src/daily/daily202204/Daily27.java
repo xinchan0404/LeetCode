@@ -10,7 +10,7 @@ import java.util.List;
  * @author xinchan
  * @version 1.0.1 2022-04-28
  */
-public class Solution27 {
+public class Daily27 {
     private int[][] dirs;
     private int[][] heights;
     private int m;

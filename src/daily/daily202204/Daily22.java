@@ -5,7 +5,7 @@ package daily.daily202204;
  * @author xinchan
  * @version 1.0.1 2022-04-22
  */
-public class Solution22 {
+public class Daily22 {
     public int maxRotateFunction(int[] nums) {
         int ans;
         int n = nums.length;
