@@ -56,7 +56,7 @@ class Offer14_II_ {
         return tmp * tmp % p;
     }
 
-    private long quickPower(int x, int n, int p) {
+    private long quickPower1(int x, int n, int p) {
         int ans = 1;
         while (n != 0) {
             if ((n & 1) != 0) {
