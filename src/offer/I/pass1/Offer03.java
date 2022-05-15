@@ -1,7 +1,5 @@
 package offer.I.pass1;
 
-import tencent.top50.pass2.Solution2;
-
 /**
  * 剑指 Offer 03. 数组中重复的数字
  * @author xinchan
