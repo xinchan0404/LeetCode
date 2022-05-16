@@ -15,6 +15,7 @@ public class LC5 {
             String tmp = s1.length() > s2.length() ? s1 : s2;
             ans = tmp.length() > ans.length() ? tmp : ans;
         }
+
         return ans;
     }
 
