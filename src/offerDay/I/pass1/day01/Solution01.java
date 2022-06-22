@@ -1,12 +1,11 @@
-package offerDay.I.pass3.day01;
+package offerDay.I.pass1.day01;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * 剑指 Offer 09. 用两个栈实现队列
  * @author xinchan
- * @version 1.0.1 2022-04-29
+ * @version 1.0.1 2022-￥06-22
  */
 public class Solution01 {
     class CQueue {
@@ -23,16 +22,17 @@ public class Solution01 {
         }
 
         public int deleteHead() {
-            if (output.isEmpty()) {
+            if (!output.isEmpty()) {
+                return output.pop();
+            } else {
                 if (!input.isEmpty()) {
                     while (!input.isEmpty()) {
                         output.push(input.pop());
                     }
-                } else {
-                    return -1;
+                    return output.pop();
                 }
             }
-            return output.pop();
+            return -1;
         }
     }
 }

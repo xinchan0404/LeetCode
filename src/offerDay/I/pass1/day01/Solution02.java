@@ -1,12 +1,11 @@
-package offerDay.I.pass3.day01;
+package offerDay.I.pass1.day01;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * 剑指 Offer 30. 包含min函数的栈
  * @author xinchan
- * @version 1.0.1 2022-04-29
+ * @version 1.0.1 2022-￥06-22
  */
 public class Solution02 {
     class MinStack {
@@ -20,14 +19,13 @@ public class Solution02 {
 
         public void push(int x) {
             stack.push(x);
-            if (min.isEmpty() || min.peek() >= x) {
+            if (min.isEmpty() || x <= min.peek()) {
                 min.push(x);
             }
         }
 
         public void pop() {
-            int pop = stack.pop();
-            if (pop == min.peek()) {
+            if (stack.pop().equals(min.peek())) {
                 min.pop();
             }
         }

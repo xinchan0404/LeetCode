@@ -3,28 +3,46 @@ package offerDay.I.pass1.day02;
 import utils.ListNode;
 
 /**
+ * 剑指 Offer 24. 反转链表
  * @author xinchan
- * @version 1.0.1 2022-03-09
+ * @version 1.0.1 2022-￥06-23
  */
 public class Solution02 {
-    private ListNode newHead;
     /**
-     * 剑指 Offer 24. 反转链表 - 递归
-     * @param head
-     * @return
+     * 原地反转
      */
     public ListNode reverseList(ListNode head) {
-        reverseListRecur(head);
+        ListNode cur = head;
+        ListNode pre = null;
+
+        while (cur != null) {
+            ListNode post = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = post;
+        }
+
+        return pre;
+    }
+}
+
+class Solution02_ {
+    /**
+     * 递归
+     */
+    private ListNode newHead;
+
+    public ListNode reverseList(ListNode head) {
+        recur(head);
         return newHead;
     }
 
-    public void reverseListRecur(ListNode head) {
+    private void recur(ListNode head) {
         if (head == null || head.next == null) {
             newHead = head;
             return;
         }
-
-        reverseListRecur(head.next);
+        recur(head.next);
         head.next.next = head;
         head.next = null;
     }
