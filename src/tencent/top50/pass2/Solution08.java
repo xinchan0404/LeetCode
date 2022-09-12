@@ -7,28 +7,16 @@ package tencent.top50.pass2;
  */
 public class Solution08 {
     public String longestCommonPrefix(String[] strs) {
-        int min = Integer.MAX_VALUE, index = 0;
-        for (int i = 0; i < strs.length; i++) {
-            int len = strs[i].length();
-            if (min > len) {
-                min = len;
-                index = i;
-            }
-        }
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < min; i++) {
-            char c = strs[index].charAt(i);
-            boolean flag = true;
-            for (String str : strs) {
-                if (str.charAt(i) != c) {
-                    flag = false;
-                    break;
+        int n = strs.length;
+        int len = strs[0].length();
+        for (int i = 0; i < len; i++) {
+            char c = strs[0].charAt(i);
+            for (int j = 1; j < n; j++) {
+                if (i == strs[j].length() || strs[j].charAt(i) != c) {
+                    return strs[0].substring(0, i);
                 }
             }
-            if (flag) {
-                builder.append(c);
-            }
         }
-        return builder.toString();
+        return strs[0];
     }
 }
