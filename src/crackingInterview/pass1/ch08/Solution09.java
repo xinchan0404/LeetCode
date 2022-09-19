@@ -73,4 +73,11 @@ class Solution09_ {
             }
         }
     }
+
+    public static void main(String[] args) {
+        Solution09_ s = new Solution09_();
+        int n = 3;
+        List<String> strings = s.generateParenthesis(n);
+        System.out.println(strings);
+    }
 }
