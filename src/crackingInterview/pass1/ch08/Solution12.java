@@ -107,3 +107,9 @@ class Solution12_ {
         return list;
     }
 }
+
+class Solution12__ {
+    public List<List<String>> solveNQueens(int n) {
+        return null;
+    }
+}
