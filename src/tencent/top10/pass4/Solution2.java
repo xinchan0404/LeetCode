@@ -1,4 +1,4 @@
-package tencent.top10.pass4.basic;
+package tencent.top10.pass4;
 
 import java.util.Arrays;
 

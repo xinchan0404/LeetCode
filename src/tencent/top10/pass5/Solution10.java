@@ -1,16 +1,17 @@
-package tencent.top10.pass4.basic;
+package tencent.top10.pass5;
 
 /**
  * 3. 无重复字符的最长子串
  * @author xinchan
- * @version 1.0.1 2023-02-19
+ * @version 1.0.1 2023-02-20
  */
-public class Solution9 {
+public class Solution10 {
     public int lengthOfLongestSubstring(String s) {
-        char[] cnt = new char[128];
         int n = s.length();
-        int left = -1, right = -1, max = 1;
-        while (++right < n){
+        char[] cnt = new char[128];
+        int left = -1, right = -1, max = 0;
+
+        while (++right < n) {
             int index = s.charAt(right);
             cnt[index]++;
             while (cnt[index] > 1) {

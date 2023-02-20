@@ -1,4 +1,4 @@
-package tencent.top10.pass4.basic;
+package tencent.top10.pass4;
 
 /**
  * 5. 最长回文子串

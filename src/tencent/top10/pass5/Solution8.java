@@ -1,32 +1,16 @@
-package tencent.top10.pass4.basic;
+package tencent.top10.pass5;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author xinchan
- * @version 1.0.1 2023-02-18
+ * @version 1.0.1 2023-02-20
  */
-public class Solution7 {
-
+public class Solution8 {
 }
 
 class LRUCache {
-    private Node head;
-    private Node tail;
-    private int capacity;
-    private Map<Integer, Node> map;
-
-    public LRUCache(int capacity) {
-        this.head = new Node(-1, -1);
-        this.tail = new Node(-1, -1);
-        this.capacity = capacity;
-        this.map = new HashMap<>();
-
-        this.head.next = this.tail;
-        this.tail.pre = this.head;
-    }
-
     class Node {
         private int key;
         private int value;
@@ -39,45 +23,63 @@ class LRUCache {
         }
     }
 
+    private Node head;
+    private Node tail;
+    private int capacity;
+    private Map<Integer, Node> map;
+
+
+    public LRUCache(int capacity) {
+        this.head = new Node(-1, -1);
+        this.tail = new Node(-1, -1);
+        this.capacity = capacity;
+        this.map = new HashMap<>();
+
+        head.next = tail;
+        tail.pre = head;
+    }
+
     public int get(int key) {
-        if (!map.containsKey(key)) {
-            return -1;
-        }
         Node node = map.get(key);
-        moveToHead(node);
-        return node.value;
+        if (node == null) {
+            return -1;
+        } else {
+            moveToHead(node);
+            return node.value;
+        }
     }
 
     public void put(int key, int value) {
-        Node node;
-        if (!map.containsKey(key)) {
+        Node node = map.get(key);
+        if (node == null) {
             node = new Node(key, value);
-            map.put(key, node);
             addToHead(node);
+            map.put(key, node);
             if (map.size() > capacity) {
-                map.remove(removeTail().key);
+                node = removeTail();
+                map.remove(node.key);
             }
+        } else {
+            node.value = value;
+            moveToHead(node);
         }
-        node = map.get(key);
-        node.value = value;
-        moveToHead(node);
     }
 
     private void addToHead(Node node) {
         node.next = head.next;
         head.next.pre = node;
-        head.next = node;
         node.pre = head;
+        head.next = node;
+    }
+
+    private void removeNode(Node node) {
+        node.next.pre = node.pre;
+        node.pre.next = node.next;
     }
 
     private void moveToHead(Node node) {
         removeNode(node);
         addToHead(node);
-    }
-
-    private void removeNode(Node node) {
-        node.pre.next = node.next;
-        node.next.pre = node.pre;
     }
 
     private Node removeTail() {
