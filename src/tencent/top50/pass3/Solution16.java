@@ -27,7 +27,18 @@ public class Solution16 {
 
     private void recur(int[] nums) {
         if (list.size() == n) {
+            lists.add(new ArrayList<>(list));
+            return;
+        }
 
+        for (int i = 0; i < n; i++) {
+            if (!used[i]) {
+                list.add(nums[i]);
+                used[i] = true;
+                recur(nums);
+                used[i] = false;
+                list.remove((Integer) nums[i]);
+            }
         }
     }
 }
