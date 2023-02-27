@@ -9,6 +9,6 @@ import java.util.List;
  */
 public class Solution18 {
     public List<Integer> spiralOrder(int[][] matrix) {
-
+        return null;
     }
 }
